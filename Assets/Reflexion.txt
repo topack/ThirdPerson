@@ -1,7 +1,7 @@
 -Object
 	-Npc
 		-Race
-		-Attibute
+		-Attribute
 		-Class
 		-Spell
 		-Ai
@@ -9,13 +9,26 @@
 			-Item
 	-Pc
 		-Race
-		-Attibute
+		-Attribute
 		-Class
 		-Spell
-		-Inventory
+		-Bag
 			-Item
+		-Quest
 	-Doodad
 		-Attribute
 		-Action
 		-Loot
 			-Item
+	-Item
+		-Spell
+		-Quest
+		-Loot
+	-Quest
+		-PreQuest
+		-Item
+		-Loot
+	-Class
+		-Spell
+	-Race
+		-Spell
