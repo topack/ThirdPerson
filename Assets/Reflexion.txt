@@ -1,5 +1,21 @@
 -Object
-  -Character
-      -Attibute
-      -Spell
-      -Class
+	-Npc
+		-Race
+		-Attibute
+		-Class
+		-Spell
+		-Ai
+		-Loot
+			-Item
+	-Pc
+		-Race
+		-Attibute
+		-Class
+		-Spell
+		-Inventory
+			-Item
+	-Doodad
+		-Attribute
+		-Action
+		-Loot
+			-Item
