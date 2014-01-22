@@ -1,0 +1,5 @@
+-Object
+  -Character
+      -Attibute
+      -Spell
+      -Class
