@@ -3,6 +3,7 @@
 		-Race
 		-Attribute
 		-Class
+			-ManaType
 		-Spell
 		-Ai
 		-Loot
@@ -11,6 +12,7 @@
 		-Race
 		-Attribute
 		-Class
+			-ManaType
 		-Spell
 		-Bag
 			-Item
@@ -32,3 +34,38 @@
 		-Spell
 	-Race
 		-Spell
+
+Character :
+	-Property
+		.Name
+		.Attributes (health, strength, intelligence, crit chance...)
+		.Spells
+		.Level
+		.buffs/debuffs
+	-dies when attribute health == 0
+Race :
+	-Property
+		.Name
+		.Spells
+Class :
+	-Property
+		.Name
+		.Spells
+		.ManaType (mana, rage...)
+Attribute :
+	-Property
+		.Name
+		.Value
+		.Max value
+	-Usable by spells to modify their value
+	-Value/MaxValue can be changed from outSide
+Spell :
+	-Property 
+		.Name
+		.ManaTypeCost
+		.Buff/Debuff
+		.CastRange
+		.Self
+		.Value
+	-When used do an action : Pop Doodad, apply buff/debuff, do damage
+	-Can use character attributes to modify its values
