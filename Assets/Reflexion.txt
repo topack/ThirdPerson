@@ -132,3 +132,10 @@ Spell GameObject :
 	.CastCoolDown
 	.CastableOnSelf/CastableOnTarget
 	-Have SpellSpecificScript
+	
+SpellAoe GameObject :
+	-Have Spell
+	.radius
+	.
+	
+Item GameObject :
