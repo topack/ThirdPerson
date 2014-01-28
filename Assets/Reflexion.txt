@@ -135,6 +135,7 @@ Spell GameObject :
 	
 SpellAoe GameObject :
 	-Have Spell
+	-Have SpellSpecificScript
 	.radius
 	.
 	
