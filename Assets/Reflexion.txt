@@ -8,6 +8,7 @@
 		-Ai
 		-Loot
 			-Item
+		-Faction
 	-Pc
 		-Race
 		-Attribute
@@ -17,6 +18,7 @@
 		-Bag
 			-Item
 		-Quest
+		-Faction
 	-Doodad
 		-Attribute
 		-Action
@@ -45,6 +47,7 @@ Character :
 		.Spells
 		.Level
 		.buffs/debuffs
+		.faction
 	-dies when attribute health == 0
 Race :
 	-Property
@@ -72,3 +75,60 @@ Spell :
 		.Value
 	-When used do an action : Pop Doodad, apply buff/debuff, do damage
 	-Can use character attributes to modify its values
+
+-----------------
+GameObject		-
+-----------------
+
+Player GameObject :
+	-Have Character
+		.Name
+		.Attributes (health, strength, intelligence, crit chance...)
+		.Spells
+		.Level
+		.Buffs/Debuffs
+		.Faction
+		.FactionsReputation
+	-Have Race
+		.Name
+		.Spells
+	-Have Class
+		.Name
+		.Spells
+		.ManaType (mana, rage...)
+	-Have Bags
+	-Have QuestsToDo
+	-Properties :
+		.Experience
+		.ExperienceNextLevel
+
+Npc GameObject :
+	-Have Character
+		.Name
+		.Attributes (health, strength, intelligence, crit chance...)
+		.Spells
+		.Level
+		.Buffs/Debuffs
+		.Faction
+		.FactionsReputation
+	-Have Race
+		.Name
+		.Spells
+	-Have Class
+		.Name
+		.Spells
+		.ManaType (mana, rage...)
+	-Have QuestsToGive
+	-Have AI
+	-Have Loot
+
+Spell GameObject :
+	.Name
+	.ManaTypeCost
+	.IsBuff/IsDebuff
+	.Duration
+	.CastRange
+	.CastTime
+	.CastCoolDown
+	.CastableOnSelf/CastableOnTarget
+	-Have SpellSpecificScript
