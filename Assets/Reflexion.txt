@@ -77,13 +77,14 @@ Quest GameObject :
 	
 Item GameObject :
 	.Name
-	.Type (Dagger, Axe, Consumable, Bag, TradeGood, Container)
+	.Type (Dagger, Axe, Consumable, Bag, TradeGood, Container, Currency)
 	.Level
 	.Quality
+	.Durability
 	.Price
 	.RepairCost
 	.StackSize
-	.BagSize (>1 == bag)
+	.BagSize (>0 == bag)
 	.Slot (Head, main hand, neck, ring...)
 	.Contain (list of items in the item)
 	.SpellOnUse
