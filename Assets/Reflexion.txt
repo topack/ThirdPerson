@@ -1,45 +1,3 @@
--Object
-	-Npc
-		-Race
-		-Attribute
-		-Class
-			-ManaType
-		-Spell
-		-Ai
-		-Loot
-			-Item
-		-Faction
-	-Pc
-		-Race
-		-Attribute
-		-Class
-			-ManaType
-		-Spell
-		-Bag
-			-Item
-		-Quest
-		-Faction
-	-Doodad
-		-Attribute
-		-Action
-		-Loot
-			-Item
-	-Item
-		-Spell
-		-Quest
-		-Loot
-	-Quest
-		-PreQuest
-		-Item
-		-Loot
-	-Class
-		-Spell
-	-Race
-		-Spell
-	-UI
-
---------------------------------------------------------------------
-
 Character :
 	-Property
 		.Name
@@ -152,4 +110,3 @@ Quest GameObject :
 	.QuestsCompleteRequired
 	.Rewards (items)
 	.Gains (experience and reputation)
-	
