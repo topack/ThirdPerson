@@ -17,7 +17,7 @@ Player GameObject :
 	-Have Class
 		.Name
 		.Spells
-		.ManaType (mana, rage...)
+		.Resource (mana, rage...)
 	-Have Bags
 	-Have QuestsInProgress
 	-Properties :
@@ -33,7 +33,7 @@ Npc GameObject :
 		.Auras
 		.Faction
 		.Reputations
-	-Have ManaType
+	-Have Resource
 	-Have AI
 	-Have QuestsToGive
 	-Have Loot
@@ -41,6 +41,7 @@ Npc GameObject :
 Spell GameObject :
 	.Name
 	.Cost
+	.Resource (mana, rage...)
 	.Range (0==self)
 	.CastTime (instant == 0, channel < 0, cast > 0)
 	.Duration (duration of the spell)
@@ -65,11 +66,11 @@ Quest GameObject :
 	.Title
 	.LevelRequirement
 	.LevelDifficulty (Red, yellow, green, grey. Each difficulty change xp reward)
-	.Faction
+	.Factions
 	.DescriptionText
 	.ProgressText
 	.CompletionText
-	.Objective
+	.Objectives
 	.Sharable
 	.QuestsCompleteRequired
 	.Rewards (items)
