@@ -86,7 +86,7 @@ Player GameObject :
 		.Attributes (health, strength, intelligence, crit chance...)
 		.Spells
 		.Level
-		.Buffs/Debuffs
+		.Auras
 		.Faction
 		.FactionsReputation
 	-Have Race
@@ -100,7 +100,7 @@ Player GameObject :
 	-Have QuestsInProgress
 	-Properties :
 		.Experience
-		.ExperienceNextLevel
+		.ExperienceToNextLevel
 
 Npc GameObject :
 	-Have Character
@@ -108,18 +108,12 @@ Npc GameObject :
 		.Attributes (health, strength, intelligence, crit chance...)
 		.Spells
 		.Level
-		.Buffs/Debuffs
+		.Auras
 		.Faction
 		.FactionsReputation
-	-Have Race
-		.Name
-		.Spells
-	-Have Class
-		.Name
-		.Spells
-		.ManaType (mana, rage...)
-	-Have QuestsToGive
+	-Have ManaType
 	-Have AI
+	-Have QuestsToGive
 	-Have Loot
 
 Spell GameObject :
