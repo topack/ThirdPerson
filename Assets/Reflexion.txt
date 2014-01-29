@@ -41,12 +41,12 @@ GameObject      -
 Player GameObject :
 	-Have Character
 		.Name
-		.Attributes (health, strength, intelligence, crit chance...)
+		.Attributes (health, strength, intelligence, armor, crit chance...)
 		.Spells
 		.Level
 		.Auras
 		.Faction
-		.FactionsReputation
+		.Reputations
 	-Have Race
 		.Name
 		.Spells
@@ -63,12 +63,12 @@ Player GameObject :
 Npc GameObject :
 	-Have Character
 		.Name
-		.Attributes (health, strength, intelligence, crit chance...)
+		.Attributes (health, strength, intelligence, armor, crit chance...)
 		.Spells
 		.Level
 		.Auras
 		.Faction
-		.FactionsReputation
+		.Reputations
 	-Have ManaType
 	-Have AI
 	-Have QuestsToGive
@@ -110,3 +110,25 @@ Quest GameObject :
 	.QuestsCompleteRequired
 	.Rewards (items)
 	.Gains (experience and reputation)
+	
+Item GameObject :
+	.Name
+	.Type (Dagger, Axe, Consumable, Bag, TradeGood, Container)
+	.Level
+	.Quality
+	.Price
+	.RepairCost
+	.StackSize
+	.BagSize (>1 == bag)
+	.Slot (Head, main hand, neck, ring...)
+	.Contain (list of items in the item)
+	.Effect (list of other spell, aura, mechanics to do ex :
+			-Apply Aura: Mod Damage Done (Physical)
+			-Apply Aura: Mod Skill - Temporary (Cooking)Value: 10
+			-Apply Aura: Periodic DamageValue: 5 every 3 seconds)
+			-Summon Object (176501) Radius: 3 yards
+	.Flags (boolean condition ex :
+			-Bind on pickup
+			-Tradable
+			-Refundable
+			-Locked)
