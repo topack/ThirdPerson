@@ -86,7 +86,7 @@ Item GameObject :
 	.StackSize
 	.BagSize (>0 == bag)
 	.Slot (Head, main hand, neck, ring...)
-	.Contain (list of items in the item)
+	.Contain (list of items in the object)
 	.SpellOnUse
 	.PassiveEffect (list of other spell, aura, mechanics to do ex :
 			-Apply Aura: Mod Damage Done (Physical)
@@ -99,3 +99,12 @@ Item GameObject :
 			-Refundable
 			-Locked
 			-Cannot be used in combat)
+
+WorldObject GameObject :
+	.Name
+	.Type (door, container, node)
+	.SkillLevel
+	.Contain (list of items in the object)
+	.Flags (boolean condition ex :
+			-require lockpicking
+			-require mining)
