@@ -1,39 +1,3 @@
-Character :
-	-Property
-		.Name
-		.Attributes (health, strength, intelligence, crit chance...)
-		.Spells
-		.Level
-		.buffs/debuffs
-		.faction
-	-dies when attribute health == 0
-Race :
-	-Property
-		.Name
-		.Spells
-Class :
-	-Property
-		.Name
-		.Spells
-		.ManaType (mana, rage...)
-Attribute :
-	-Property
-		.Name
-		.Value
-		.Max value
-	-Usable by spells to modify their value
-	-Value/MaxValue can be changed from outSide
-Spell :
-	-Property 
-		.Name
-		.ManaTypeCost
-		.Buff/Debuff
-		.CastRange
-		.Self
-		.Value
-	-When used do an action : Pop Doodad, apply buff/debuff, do damage
-	-Can use character attributes to modify its values
-
 -----------------
 GameObject      -
 -----------------
@@ -122,7 +86,8 @@ Item GameObject :
 	.BagSize (>1 == bag)
 	.Slot (Head, main hand, neck, ring...)
 	.Contain (list of items in the item)
-	.Effect (list of other spell, aura, mechanics to do ex :
+	.SpellOnUse
+	.PassiveEffect (list of other spell, aura, mechanics to do ex :
 			-Apply Aura: Mod Damage Done (Physical)
 			-Apply Aura: Mod Skill - Temporary (Cooking)Value: 10
 			-Apply Aura: Periodic DamageValue: 5 every 3 seconds)
@@ -131,4 +96,5 @@ Item GameObject :
 			-Bind on pickup
 			-Tradable
 			-Refundable
-			-Locked)
+			-Locked
+			-Cannot be used in combat)
