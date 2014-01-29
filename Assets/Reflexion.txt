@@ -77,7 +77,7 @@ Spell :
 	-Can use character attributes to modify its values
 
 -----------------
-GameObject		-
+GameObject      -
 -----------------
 
 Player GameObject :
@@ -97,7 +97,7 @@ Player GameObject :
 		.Spells
 		.ManaType (mana, rage...)
 	-Have Bags
-	-Have QuestsToDo
+	-Have QuestsInProgress
 	-Properties :
 		.Experience
 		.ExperienceNextLevel
@@ -144,3 +144,18 @@ Spell GameObject :
 			-Passive spell
 			-Aura is hidden
 			-Starts ticking at aura application)
+
+Quest GameObject :
+	.Title
+	.LevelRequirement
+	.LevelDifficulty (Red, yellow, green, grey. Each difficulty change xp reward)
+	.Faction
+	.DescriptionText
+	.ProgressText
+	.CompletionText
+	.Objective
+	.Sharable
+	.QuestsCompleteRequired
+	.Rewards (items)
+	.Gains (experience and reputation)
+	
