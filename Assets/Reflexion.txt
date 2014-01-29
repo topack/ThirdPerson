@@ -87,8 +87,7 @@ Item GameObject :
 	.BagSize (>0 == bag)
 	.Slot (Head, main hand, neck, ring...)
 	.Contain (list of items in the object)
-	.SpellOnUse
-	.PassiveEffect (list of other spell, aura, mechanics to do ex :
+	.Effect (list of other spell, aura, mechanics to do ex :
 			-Apply Aura: Mod Damage Done (Physical)
 			-Apply Aura: Mod Skill - Temporary (Cooking)Value: 10
 			-Apply Aura: Periodic DamageValue: 5 every 3 seconds)
@@ -103,8 +102,17 @@ Item GameObject :
 WorldObject GameObject :
 	.Name
 	.Type (door, container, node)
+	.SpawnTimer
+	.LifeTime
 	.SkillLevel
 	.Contain (list of items in the object)
+	.Effect (list of other spell, aura, mechanics to do ex :
+			-Apply Aura: Mod Damage Done (Physical)
+			-Apply Aura: Mod Skill - Temporary (Cooking)Value: 10
+			-Apply Aura: Periodic DamageValue: 5 every 3 seconds)
+			-Summon Object (176501) Radius: 3 yards
 	.Flags (boolean condition ex :
 			-require lockpicking
-			-require mining)
+			-require mining
+			-Despawn when empty
+			-Give one by one)
