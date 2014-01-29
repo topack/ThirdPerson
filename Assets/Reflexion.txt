@@ -124,19 +124,23 @@ Npc GameObject :
 
 Spell GameObject :
 	.Name
-	.ManaTypeCost
-	.IsBuff/IsDebuff
-	.Duration
-	.CastRange
-	.CastTime
-	.CastCoolDown
-	.CastableOnSelf/CastableOnTarget
-	-Have SpellSpecificScript
-	
-SpellAoe GameObject :
-	-Have Spell
-	-Have SpellSpecificScript
-	.radius
-	.
-	
-Item GameObject :
+	.Cost
+	.Range (0==self)
+	.CastTime (instant == 0, channel < 0, cast > 0)
+	.Duration (duration of the spell)
+	.Cooldown
+	.GlobalCoolDown
+	.School (shadow, holy, physical...)
+	.Mechanic (Shielded, Polymorphed)
+	.DispellType (magic, poison, curse...)
+	.Effect (list of other spell, aura, mechanics to do ex :
+			-Apply Aura: Mod Damage Done (Physical)
+			-Apply Aura: Mod Skill - Temporary (Cooking)Value: 10
+			-Apply Aura: Periodic DamageValue: 5 every 3 seconds)
+			-Summon Object (176501) Radius: 3 yards
+	.Flags (boolean condition ex :
+			-Cannot be used while shapeshifted,
+			-Cannot be used in combat
+			-Passive spell
+			-Aura is hidden
+			-Starts ticking at aura application)
