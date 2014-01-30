@@ -11,7 +11,7 @@ public interface ICharacter
     /// <summary>
     /// Faction of the character
     /// </summary>
-    IFaction Faction { get; set; }
+    FactionType Faction { get; set; }
     /// <summary>
     /// Attribute list of the character
     /// </summary>
