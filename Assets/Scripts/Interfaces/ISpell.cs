@@ -63,6 +63,10 @@ public interface ISpell
     /// </summary>
     bool PassiveSpell { get; set; }
     /// <summary>
+    /// the spell is an aura
+    /// </summary>
+    bool IsAura { get; set; }
+    /// <summary>
     /// Hide the the spell aura
     /// </summary>
     bool HideAura { get; set; }
