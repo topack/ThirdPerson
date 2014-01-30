@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ICharacter : MonoBehaviour
+public class ICharacter
 {
     /// <summary>
     /// Name of the character
