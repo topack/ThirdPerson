@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Character : MonoBehaviour
 {
+    #region Unity
     // called once when the script is attached to the object
     void Awake ()
     }
@@ -22,4 +23,13 @@ public class Character : MonoBehaviour
     void Update ()
     {
     }
+    #enregion
+    
+    Name Name;
+    Level Level;
+    Faction Faction;
+    Attribute[] Attributes;
+    Spell[] Spells;
+    Aura[] Auras;
+    Reputation[] Reputations;
 }
