@@ -1,7 +1,5 @@
-using UnityEngine;
-using System.Collections;
 
-public class Name
+public interface Name
 {
     string Text { get; set; };
 }
