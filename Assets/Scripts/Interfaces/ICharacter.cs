@@ -23,7 +23,7 @@ public interface ICharacter
     /// <summary>
     /// Aura List of the character
     /// </summary>
-    IAura[] Auras { get; set; }
+    ISpell[] Auras { get; set; }
     /// <summary>
     /// Reputation list of the character
     /// </summary>
