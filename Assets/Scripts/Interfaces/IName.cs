@@ -3,5 +3,5 @@ public interface Name
     /// <summary>
     /// Text of the name
     /// </summary>
-    string Text { get; set; };
+    string Text { get; set; }
 }
