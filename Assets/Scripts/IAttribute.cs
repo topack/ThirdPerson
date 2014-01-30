@@ -1,7 +1,4 @@
-using UnityEngine;
-using System.Collections;
-
-public class IAttribute : MonoBehaviour
+public interface IAttribute
 {
     string Name { get; set; };
     float Value { get; set; };
