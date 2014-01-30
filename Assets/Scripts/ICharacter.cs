@@ -1,7 +1,4 @@
-using UnityEngine;
-using System.Collections;
-
-public class ICharacter
+public interface ICharacter
 {
     /// <summary>
     /// Name of the character
