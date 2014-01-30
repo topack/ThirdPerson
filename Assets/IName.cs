@@ -3,5 +3,5 @@ using System.Collections;
 
 public class Name : MonoBehaviour
 {
-    string Text;
+    string Text { get; set; };
 }
