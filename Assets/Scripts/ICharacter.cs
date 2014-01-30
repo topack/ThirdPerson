@@ -3,7 +3,7 @@ public interface ICharacter
     /// <summary>
     /// Name of the character
     /// </summary>
-    string Name { get; set; };
+    IName Name { get; set; };
     /// <summary>
     /// Level of the character
     /// </summary>
