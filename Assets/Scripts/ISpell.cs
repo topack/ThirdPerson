@@ -5,7 +5,7 @@ public interface ISpell
     /// </summary>
     IName Name { get; set; }
     /// <summary>
-    /// 
+    /// Ressource cost of the spell
     /// </summary>
     int Cost { get; set; }
     /// <summary>
