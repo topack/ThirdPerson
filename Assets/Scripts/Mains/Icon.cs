@@ -9,7 +9,7 @@ public class SpellButton : MonoBehaviour
 	public Vector2 Size;
 	public Vector2 Position;
 	public Texture DefaultTexture
-	public GameObject SpellObject
+	public Spell SpellObject
 	
 	private Spell Spell;
 	private Texture Texture;
@@ -28,12 +28,11 @@ public class SpellButton : MonoBehaviour
 		}
 	}
 	
-	public AddSpell(GameObject gameObject)
+	public AddSpell(Spell spell)
 	{
-		Spell = gameObject.GetComponent<Spell>();
-		if(Spell != null && Spell.Texture != null)
+		if(spell != null && spell.Texture != null)
 		{
-			Texture = Spell.Texture
+			Texture = spell.Texture
 		}
 		else
 		{
