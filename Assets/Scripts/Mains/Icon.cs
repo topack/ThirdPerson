@@ -15,12 +15,6 @@ public class SpellButton : MonoBehaviour
 	private Spell Spell
 	#endregion
 
-	public Icon (Character player, Spell spell)
-	{
-		Spell = spell;
-		Player = player;
-	}
-
 	public void OnGUI()
 	{
 		if (GUI.Button(Rect(Size.x,Size.y,Position.x,Position.y), Texture))
