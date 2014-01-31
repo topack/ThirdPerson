@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Spell : MonoBehaviour
 {
 	#region Declaration
+	public int Id;
 	public string Name;
 	public Texture Texture;
 	public int Range;	// (0==self)
@@ -21,24 +22,39 @@ public class Spell : MonoBehaviour
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects;
+	
+	private GameObject Caster;
+	private GameObject Target;
 	#endregion
 
-	public void Awake()
+	public Spell(int spellId)
 	{
+		SpellId = spellId;
+		InitialiseSpell();
+	}
+	
+	/// <summary>
+	/// Initialise the spell with the DB data
+	/// </summary>
+	protected void InitialiseSpell()
+	{
+		
 	}
 
 	/// <summary>
 	/// Casts the spell on the target
 	/// </summary>
-	public virtual void Cast()
+	public virtual void Cast(GameObject caster, GameObject target)
 	{
-		SelfEffect();
-		ApplyEffects();
-	}
-	
-	protected virtual void SelfEffect()
-	{
+		Debug.Log("Spell");
 		
+		Caster = caster;
+		Target = target;
+		
+		ApplyEffects();
+		
+		Caster = null;
+		Target = null;
 	}
 	
 	/// <summary>
@@ -48,7 +64,7 @@ public class Spell : MonoBehaviour
 	{
 		foreach(Spell spell in Effects)
 		{
-			spell.Cast();
+			spell.Cast(Caster, Target);
 		}
 	}
 }
