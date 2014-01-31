@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Character : MonoBehaviour
 {
 	#region Declaration
-	public int Health;
-	public List<GameObject> SpellObjects;
+	public Attribute Health;
+	public List<Spell> Spells;
 	#endregion
 }
