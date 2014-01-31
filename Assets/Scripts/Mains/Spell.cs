@@ -20,18 +20,11 @@ public class Spell : MonoBehaviour
 	public bool PassiveSpell;
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
-	public List<GameObject> EffectObjects;
-
-	private List<Spell> Effects = new List<Spell>();
+	public List<Spell> Effects;
 	#endregion
 
 	public void Awake()
 	{
-		foreach(GameObject go in EffectObjects)
-		{
-			Spell spell = go.GetComponent<Spell>();
-			Effects.Add(spell);
-		}
 	}
 
 	/// <summary>
