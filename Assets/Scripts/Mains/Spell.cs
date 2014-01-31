@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class Spell : MonoBehaviour
 {
+	#region Declaration
 	public string Name;
-	public int Range;		// (0==self)
+	public Texture Texture;
+	public int Range;	// (0==self)
 	public int CastTime;	// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
 	public int Cooldown;
@@ -13,42 +15,47 @@ public class Spell : MonoBehaviour
 	public SchoolType School;
 	public MechanicType Mechanic;
 	public DispellType DispellType;
-	public List<GameObject> Effects;
 	public bool CannotBeUsedInCombat;
 	public bool CannotBeUsedWhileShapeshifted;
 	public bool PassiveSpell;
-	public bool AuraIsHidden;
+	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
+	public List<GameObject> EffectObjects;
 
-	private List<Spell> SpellEffects = new List<Spell>();
+	private List<Spell> Effects = new List<Spell>();
+	#endregion
 
-	void Awake()
+	public void Awake()
 	{
-		foreach(GameObject go in Effects)
+		foreach(GameObject go in EffectObjects)
 		{
 			Spell spell = go.GetComponent<Spell>();
-			SpellEffects.Add(spell);
+			Effects.Add(spell);
 		}
 	}
 
 	/// <summary>
 	/// Casts the spell on the target
 	/// </summary>
-	/// <param name="Target">Target of the spell</param>
-	public virtual void CastSpell(GameObject Target)
+	public virtual void Cast()
 	{
-		ApplyEffects(Target);
+		SelfEffect();
+		ApplyEffects();
 	}
-
+	
+	protected virtual void SelfEffect()
+	{
+		
+	}
+	
 	/// <summary>
 	/// Applies the effects of the spell
 	/// </summary>
-	/// <param name="Target">Target of the spell</param>
-	protected void ApplyEffects(GameObject target)
+	protected virtual void ApplyEffects()
 	{
-		foreach(Spell spell in SpellEffects)
+		foreach(Spell spell in Effects)
 		{
-			spell.CastSpell(target);
+			spell.Cast();
 		}
 	}
 }
