@@ -9,15 +9,16 @@ public class SpellButton : MonoBehaviour
 	public Vector2 Size;
 	public Vector2 Position;
 	public Texture DefaultTexture
-	public Spell SpellObject
+	public Character Player
 	
-	private Spell Spell;
 	private Texture Texture;
+	private Spell Spell
 	#endregion
-	
-	public void Awake()
+
+	public Icon (Character player, Spell spell)
 	{
-		AddSpell(SpellObject);
+		Spell = spell;
+		Player = player;
 	}
 
 	public void OnGUI()
@@ -42,7 +43,7 @@ public class SpellButton : MonoBehaviour
 	
 	public Click()
 	{
-		spell.Cast();
+		spell.Cast(Player.Gameobject, Player.Target);
 	}
 	
 	public Drag(Vector2 position)
