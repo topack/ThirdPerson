@@ -10,7 +10,7 @@ public class Main : MonoBehaviour
 	{
 		Icon = new GameObject("SpellIcon1", Icon) as Icon;
 		Icon.Player = Player;
-		Icon.Spell = new Spell(1);
+		Icon.AddSpell = new Spell(1);
 	}
 	
 	public void Update()
