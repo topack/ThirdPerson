@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Player1
   Health: 100
-  Target: {fileID: 0}
+  Target: {fileID: 1319408252}
 --- !u!23 &119038063
 Renderer:
   m_ObjectHideFlags: 0

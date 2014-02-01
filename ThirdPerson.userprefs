@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Mains/Spell.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Mains/SpellFrostNova.cs">
     <Files>
-      <File FileName="Assets/Scripts/Mains/Spell.cs" Line="22" Column="27" />
-      <File FileName="Assets/Scripts/Mains/Character.cs" Line="9" Column="27" />
-      <File FileName="Assets/Scripts/Mains/Main.cs" Line="26" Column="22" />
-      <File FileName="Assets/Scripts/Mains/Icon.cs" Line="22" Column="3" />
+      <File FileName="Assets/Scripts/Mains/Spell.cs" Line="12" Column="19" />
+      <File FileName="Assets/Scripts/Mains/Character.cs" Line="10" Column="50" />
+      <File FileName="Assets/Scripts/Mains/Main.cs" Line="35" Column="23" />
+      <File FileName="Assets/Scripts/Mains/Icon.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/Mains/SpellFrostNova.cs" Line="17" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

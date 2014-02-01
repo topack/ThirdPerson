@@ -9,6 +9,7 @@ public class Spell
 	public string Name;
 	public Texture IconTexture;
 	public GameObject SpellObject;
+	public int Value;
 	public int Range;		// (0==self)
 	public int CastTime;	// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
@@ -23,9 +24,6 @@ public class Spell
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects = new List<Spell>();
-	
-	private GameObject Caster;
-	private GameObject Target;
 	#endregion
 
 	public Spell(){}
@@ -55,13 +53,21 @@ public class Spell
 			return;
 		}
 
-		Debug.Log(string.Format("{0} cast {1} on {2}", caster.GetComponent<Character>().Name, this.Name, target.GetComponent<Character>().Name));
-
+		Debug.Log(string.Format("{0} cast {1} on {2} for {3}", caster.GetComponent<Character>().Name, this.Name, target.GetComponent<Character>().Name, Duration.ToString()));
+		ApplySelf(caster, target);
 		ApplyEffects(caster, target);
 	}
-	
+
 	/// <summary>
-	/// Applies the effects of the spell
+	/// Apply the effect of the spell
+	/// </summary>
+	protected virtual void ApplySelf(GameObject caster, GameObject target)
+	{
+
+	}
+
+	/// <summary>
+	/// Apply the effects of the spell
 	/// </summary>
 	protected virtual void ApplyEffects(GameObject caster, GameObject target)
 	{

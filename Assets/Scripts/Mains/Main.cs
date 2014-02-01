@@ -7,28 +7,44 @@ public class Main : MonoBehaviour
 	public Icon Icon1;
 	public Icon Icon2;
 	public Spell FireBall;
-	public SpellIce Frostnova;
+	public Spell Frostnova;
 	
 	public void Awake()
 	{
-		FireBall = new Spell();
+		// load spell config
+		FireBall = new SpellFireBall();
 		FireBall.Id = 1;
 		FireBall.Name = "Fireball";
 		FireBall.IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
+		FireBall.Effects.Add(
+			new SpellFrostNova()
+			{
+				Id = 2,
+				Name = "Frostnova",
+				IconTexture = Resources.Load<Texture>("Spell_frost_frostnova"),
+				Duration = 5,
+				Value = 1
+			}
+		);
 
-		Frostnova = new SpellIce();
+		Frostnova = new SpellFrostNova();
 		Frostnova.Id = 2;
 		Frostnova.Name = "Frostnova";
 		Frostnova.IconTexture = Resources.Load<Texture>("Spell_frost_frostnova");
+		Frostnova.Duration = 3;
+		Frostnova.Value = 4;
 
-		FireBall.Effects.Add(Frostnova);
+		// add spell to plaier spell book
+		Player.SpellBook.Add(FireBall);
+		Player.SpellBook.Add(Frostnova);
 
+		// Init Icon and Set Spell from spellBook
 		Icon1.Player = Player;
 		Icon2.Player = Player;
-		Icon1.SetSpell(FireBall);
-		Icon2.SetSpell(Frostnova);
+		Icon1.SetSpell(Player.SpellBook[0]);
+		Icon2.SetSpell(Player.SpellBook[1]);
 	}
-	
+
 	public void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.A))
