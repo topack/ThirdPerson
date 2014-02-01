@@ -1,52 +1,51 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SpellButton : MonoBehaviour
+public class Icon : MonoBehaviour
 {
-	#region Declaration
 	public bool Active;
 	public bool Clickable;
 	public Vector2 Size;
 	public Vector2 Position;
-	public Texture DefaultTexture
-	public Character Player
-	
-	private Texture Texture;
-	private Spell Spell
-	#endregion
+	public Texture DefaultTexture;
+	public Character Player;
+	public Spell Spell;
 
-	public void OnGUI()
+	private Texture IconTexture;
+
+	void OnGUI()
 	{
-		if (GUI.Button(Rect(Size.x,Size.y,Position.x,Position.y), Texture))
+		if (GUI.Button(new Rect(Position.x, Position.y, Size.x, Size.y), IconTexture))
 		{
 			Click();
 		}
 	}
-	
-	public AddSpell(Spell spell)
+
+	public void SetSpell(Spell spell)
 	{
-		if(spell != null && spell.Texture != null)
+		Spell = spell;
+		if(spell != null && spell.IconTexture != null)
 		{
-			Texture = spell.Texture
+			IconTexture = spell.IconTexture;
 		}
 		else
 		{
-			Texture = DefaultTexture;
+			IconTexture = DefaultTexture;
 		}
 	}
-	
-	public Click()
+
+	public void Click()
 	{
-		spell.Cast(Player.Gameobject, Player.Target);
+		Spell.Cast(Player.gameObject, Player.Target);
 	}
 	
-	public Drag(Vector2 position)
+	public void Drag(Vector2 position)
 	{
 		Clickable = false;
 		Position = position;
 	}
 	
-	public Drop()
+	public void Drop()
 	{
 		Clickable = true;
 	}

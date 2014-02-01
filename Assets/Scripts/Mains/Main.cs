@@ -4,29 +4,40 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour
 {
 	public Character Player;
-	public Icon Icon;
+	public Icon Icon1;
+	public Icon Icon2;
+	public Spell FireBall;
+	public SpellIce Frostnova;
 	
-	public void Start()
+	public void Awake()
 	{
-		Icon = new GameObject("SpellIcon1", Icon) as Icon;
-		Icon.Player = Player;
-		Icon.AddSpell = new Spell(1);
+		FireBall = new Spell();
+		FireBall.Id = 1;
+		FireBall.Name = "Fireball";
+		FireBall.IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
+
+		Frostnova = new SpellIce();
+		Frostnova.Id = 2;
+		Frostnova.Name = "Frostnova";
+		Frostnova.IconTexture = Resources.Load<Texture>("Spell_frost_frostnova");
+
+		FireBall.Effects.Add(Frostnova);
+
+		Icon1.Player = Player;
+		Icon2.Player = Player;
+		Icon1.SetSpell(FireBall);
+		Icon2.SetSpell(Frostnova);
 	}
 	
 	public void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			Player.AddSpell(Icon.Spell);
-			Player.AddSpell(new SpellIce(2));
+			Icon1.Click();
 		}
-		if(Input.GetKeyDown(KeyCode.Z))
+		if (Input.GetKeyDown(KeyCode.Z))
 		{
-			Player.CastSpell(1);
-		}
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			Player.CastSpell(2);
+			Icon2.Click();
 		}
 	}
 }
