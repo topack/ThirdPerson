@@ -8,10 +8,10 @@ public class Spell
 	public int Id;
 	public string Name;
 	public Texture IconTexture;
-	public GameObject SpellObject;
+	public string Prefab;		// prefab of the spell for 3D render
 	public int Value;
-	public int Range;		// (0==self)
-	public int CastTime;	// (instant == 0, channel < 0, cast > 0)
+	public int Range;			// (0==self)
+	public int CastTime;		// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
 	public int Cooldown;
 	public int GlobalCooldown;
@@ -53,7 +53,8 @@ public class Spell
 			return;
 		}
 
-		Debug.Log(string.Format("{0} cast {1} on {2} for {3}", caster.GetComponent<Character>().Name, this.Name, target.GetComponent<Character>().Name, Duration.ToString()));
+		Debug.Log(string.Format("Cast spell : {0}", Name));
+
 		ApplySelf(caster, target);
 		ApplyEffects(caster, target);
 	}

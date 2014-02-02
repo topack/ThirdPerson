@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class SpellFrostNova : Spell
+public class SpellFrostNova : SpellNova
 {
-	/// <summary>
-	/// Apply the effect of the spell
-	/// </summary>
-	protected override void ApplySelf(GameObject caster, GameObject target)
+	public override void Trigger(GameObject gameobject)
 	{
-		Character character = target.GetComponent<Character>();
-		if (character != null)
+		Debug.Log("Frostnova groundAoe : " + gameobject.name);
+		Character target = gameobject.GetComponent<Character>();
+		if(target != null && target != Main.Player)
 		{
-			character.Health -= this.Value;
+			Debug.Log(string.Format("{0} cast {1} on {2} for {3}", Main.Player.Name, this.Name, target.Name, Value.ToString()));
+			target.Health -= Value;
 		}
 	}
 }
