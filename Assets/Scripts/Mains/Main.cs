@@ -15,41 +15,32 @@ public class Main : MonoBehaviour
 		Player = GameObject.Find("Character1").GetComponent<Character>();
 
 		// load spell config
-		FireBall = new SpellFireBall();
+		FireBall = new Spell();
 		FireBall.Id = 1;
 		FireBall.Name = "Fireball";
 		FireBall.IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
+		FireBall.Prefab = "Prefabs/Spells/SpellFireball";
+		FireBall.Value = 1;
 		FireBall.Effects.Add(
-			new SpellFrostNova()
-			{
-			Id = 2,
-			Name = "Frostnova",
-			IconTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova"),
-			Duration = 5,
-			Value = 1,
-			Prefab = "Prefabs/Spells/GroundAoe"
-			}
-		);
-		FireBall.Effects.Add(
-			new SpellFrostNovaRoot()
+			new Spell
 			{
 			Id = 3,
-			Name = "FrostnovaRoot",
-			IconTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova"),
+			Name = "Dot",
+			IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02"),
+			Prefab = "Prefabs/Spells/SpellFireDot",
+			Value = 2,
 			Duration = 5,
-			Value = 1,
-			Prefab = "Prefabs/Spells/FrostnovaRoot"
+			TickTimer = 1,
+			StartTickingAtAuraApplication = false
 			}
 		);
-
-		Frostnova = new SpellFrostNova();
+		
+		Frostnova = new Spell();
 		Frostnova.Id = 2;
 		Frostnova.Name = "Frostnova";
 		Frostnova.IconTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova");
 		Frostnova.Duration = 3;
 		Frostnova.Value = 4;
-
-		Frostnova.Cast(Player.gameObject, Player.Target.gameObject);
 
 		// add spell to plaier spell book
 		Player.SpellBook.Add(FireBall);

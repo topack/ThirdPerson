@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
 public class Spell
 {
 	#region Declaration
@@ -13,6 +12,7 @@ public class Spell
 	public int Range;			// (0==self)
 	public int CastTime;		// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
+	public int TickTimer;
 	public int Cooldown;
 	public int GlobalCooldown;
 	public SchoolType School;
@@ -55,26 +55,43 @@ public class Spell
 
 		Debug.Log(string.Format("Cast spell : {0}", Name));
 
-		ApplySelf(caster, target);
-		ApplyEffects(caster, target);
+		Apply(caster, target);
 	}
 
 	/// <summary>
-	/// Apply the effect of the spell
+	/// Apply the spell
 	/// </summary>
-	protected virtual void ApplySelf(GameObject caster, GameObject target)
+	/// <param name="caster">caster of the spell</param>
+	/// <param name="target">target of the spell</param>
+	protected virtual void Apply(GameObject caster, GameObject target)
 	{
-
+		CreatePrefab(caster, target);
 	}
 
 	/// <summary>
-	/// Apply the effects of the spell
+	/// Create the prefab of the spell
 	/// </summary>
-	protected virtual void ApplyEffects(GameObject caster, GameObject target)
+	/// <param name="caster">caster of the spell</param>
+	/// <param name="target">target of the spell</param>
+	protected virtual void CreatePrefab(GameObject caster, GameObject target)
 	{
-		foreach(Spell spell in Effects)
+		Object prefab = Resources.Load(Prefab);
+		if (prefab != null)
 		{
-			spell.Cast(caster, target);
+			GameObject obj = GameObject.Instantiate(prefab, caster.transform.position, Quaternion.identity) as GameObject;
+			SpellPrefab spellPrefab = obj.GetComponent<SpellPrefab>();
+			if(spellPrefab != null)
+			{
+				spellPrefab.Name = Name;
+				spellPrefab.IconTexture = IconTexture;
+				spellPrefab.Value = Value;
+				spellPrefab.Duration = Duration;
+				spellPrefab.TickTimer = TickTimer;
+				spellPrefab.StartTickingAtAuraApplication = StartTickingAtAuraApplication;
+				spellPrefab.Effects = Effects;
+				spellPrefab.Caster = caster;
+				spellPrefab.Target = target;
+			}
 		}
 	}
 }
