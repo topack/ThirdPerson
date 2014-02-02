@@ -1,0 +1,7 @@
+TODO :
+
+-Show spellcooldown on icon
+-Can't cast spell when on cooldown
+
+-Add debuff to target
+-Remove debuff from target when debuff duration is over
