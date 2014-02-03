@@ -7,7 +7,7 @@ public class SpellPrefab : MonoBehaviour
 	public string Name;
 	public Texture IconTexture;
 	public int Value;
-	public int Range;			// (0==self)
+	public int Range;		// (0==self)
 	public int CastTime;		// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
 	public int TickTimer;
@@ -26,7 +26,7 @@ public class SpellPrefab : MonoBehaviour
 	public GameObject Caster;
 	public GameObject Target;
 	public float TotalDuration;
-
+	
 	public virtual void ApplyEffects()
 	{
 		foreach(Spell spell in Effects)
@@ -35,6 +35,14 @@ public class SpellPrefab : MonoBehaviour
 		}
 	}
 
+	public virtual void ApplyAura(Character target)
+	{
+		if(target != null)
+		{
+			target.Auras.Add(this);
+		}
+	}
+	
 	public virtual void ProjectilTrigger(GameObject gameobject)
 	{
 		Debug.Log("SpellPrefab ProjectilTrigger");
