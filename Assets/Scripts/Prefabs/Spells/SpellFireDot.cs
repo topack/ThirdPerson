@@ -9,7 +9,11 @@ public class SpellFireDot : SpellPrefab
 	void Start()
 	{
 		if(TickTimer > 0)
+		{
 			TotalTick = Duration / TickTimer;
+		}
+		
+		ApplyAura(Target.GetComponent<Character>());
 		StartCoroutine(MyCoroutine());
 	}
 
