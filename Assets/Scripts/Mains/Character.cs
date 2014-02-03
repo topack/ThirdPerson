@@ -8,4 +8,5 @@ public class Character : MonoBehaviour
 	public int Health;
 	public GameObject Target;
 	public List<Spell> SpellBook = new List<Spell>();
+	public List<SpellPrefab> Auras = new List<SpellPrefab>();
 }
