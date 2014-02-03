@@ -21,6 +21,7 @@ public class SpellFireDot : SpellPrefab
 	{
 		if(nbTick == TotalTick)
 		{
+			RemoveAura(Target.GetComponent<Character>());
 			Destroy(this.gameObject);
 		}
 		else
