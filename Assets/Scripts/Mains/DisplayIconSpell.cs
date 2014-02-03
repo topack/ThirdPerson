@@ -7,6 +7,7 @@ public class DisplayIconSpell : MonoBehaviour
         public Vector2 Size;
         
         private Character Character;
+        private iconSpell
         
         void OnAwake()
         {
@@ -20,6 +21,7 @@ public class DisplayIconSpell : MonoBehaviour
                 {
                         foreach(SpellPrefab spellPrefab in Character.Auras)
                         {
+                                iconSpell = Instantiate(IconSpell);
                                 
                         }
                 }
