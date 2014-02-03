@@ -43,6 +43,14 @@ public class SpellPrefab : MonoBehaviour
 		}
 	}
 	
+	public virtual void RemoveAura(Character target)
+	{
+		if(target != null)
+		{
+			target.Auras.Remove(this);
+		}
+	}
+	
 	public virtual void ProjectilTrigger(GameObject gameobject)
 	{
 		Debug.Log("SpellPrefab ProjectilTrigger");
