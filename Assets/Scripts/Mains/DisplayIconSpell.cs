@@ -5,25 +5,22 @@ public class DisplayIconSpell : MonoBehaviour
 {
         public Vector2 Position;
         public Vector2 Size;
+        public Character Character;
         
-        private Character Character;
-        private iconSpell
+        private List<IconSpell> IconSpell = new List<IconSpell>();
+        
+        /// <TODO>
+        /// subscribe event Character.AddAura()
+        /// subscribe event Character.RemoveAura()
+        /// </TODO>
         
         void OnAwake()
         {
-                Character = this.GameObject.GetComponent<Character>();
+                Character.OnAuraAdded += DisplayIcon();
         }
         
-        void OnGUI()
+        public void DisplayIcon(SpellPrefab spellPrefab)
         {
-                //TODO display 
-                if(Character ! =null)
-                {
-                        foreach(SpellPrefab spellPrefab in Character.Auras)
-                        {
-                                iconSpell = Instantiate(IconSpell);
-                                
-                        }
-                }
+                
         }
 }
