@@ -39,7 +39,7 @@ public class SpellPrefab : MonoBehaviour
 	{
 		if(target != null)
 		{
-			target.Auras.Add(this);
+			target.AddAura(this);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class SpellPrefab : MonoBehaviour
 	{
 		if(target != null)
 		{
-			target.Auras.Remove(this);
+			target.RemoveAura(this);
 		}
 	}
 	

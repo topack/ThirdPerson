@@ -6,7 +6,6 @@ public class IconSpell: MonoBehaviour
 	public Vector2 Size;
 	public Vector2 Position;
 	public Texture DefaultTexture;
-	public Character Character;
 	public SpellPrefab SpellPrefab;
 
 	private Texture IconTexture;
