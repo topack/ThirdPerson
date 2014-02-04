@@ -6,6 +6,7 @@ public class DisplayIconSpell : MonoBehaviour
 	public Vector2 Position;
 	public Vector2 Size;
 	public Character Character;
+	public Vector2 IconSize;
 	public List<IconSpell> IconSpells = new List<IconSpell>();
 
 	public void Awake()
@@ -17,7 +18,6 @@ public class DisplayIconSpell : MonoBehaviour
 
 	public void Update()
 	{
-
 	}
 
 	public void AddAura(SpellPrefab spellPrefab)
@@ -27,7 +27,8 @@ public class DisplayIconSpell : MonoBehaviour
 		{
 			GameObject iconSpellObj = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			IconSpell iconSpell = iconSpellObj.GetComponent<IconSpell>();
-			iconSpell.SpellPrefab = spellPrefab;
+			iconSpell.SetSpellPrefab(spellPrefab);
+			iconSpell.SetIconSize(IconSize);
 			IconSpells.Add(iconSpell);
 			Debug.Log(spellPrefab.Name + " added to display icon");
 		}
