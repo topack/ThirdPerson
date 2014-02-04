@@ -16,7 +16,7 @@ public class Test : MonoBehaviour
 	void Update ()
 	{
 		Vector3 screenPos = Camera.main.WorldToScreenPoint(tr.position);
-
-		texture.pixelInset = new Rect(screenPos.x, Screen.height - screenPos.y, 20, 20);
+		
+		texture.pixelInset = new Rect(screenPos.x - Screen.width / 2, screenPos.y - Screen.height / 2, 20, 20);
 	}
 }
