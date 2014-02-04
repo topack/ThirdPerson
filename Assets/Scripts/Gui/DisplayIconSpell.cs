@@ -8,13 +8,6 @@ public class DisplayIconSpell : MonoBehaviour
 	public Character Character;
 	public List<IconSpell> IconSpells = new List<IconSpell>();
 
-<<<<<<< HEAD
-=======
-	/// subscribe event Character.AddAura()
-	/// subscribe event Character.RemoveAura()
-	/// </TODO>
-
->>>>>>> 0139b609a9fb2463bac938f6059b5ff02853be92
 	public void Awake()
 	{
 		Character = this.gameObject.GetComponent<Character>();
