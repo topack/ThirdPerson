@@ -39,6 +39,7 @@ public class DisplayIconSpell : MonoBehaviour
 
 	public void RemoveAura(SpellPrefab spellPrefab)
 	{
+		//TODO : remove instance of IconSpell GameObject
 
 		IconSpells.RemoveAll(p => p.SpellPrefab == spellPrefab);
 
