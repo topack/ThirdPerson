@@ -19,7 +19,11 @@ public class Character : MonoBehaviour
 		if(spellPrefab != null)
 		{
 			Auras.Add(spellPrefab);
-			OnAuraAdded(spellPrefab);
+
+			if(OnAuraAdded != null)
+			{
+				OnAuraAdded(spellPrefab);
+			}
 		}
 	}
 	
@@ -28,7 +32,10 @@ public class Character : MonoBehaviour
 		if(spellPrefab != null)
 		{
 			Auras.Remove(spellPrefab);
-			OnAuraRemoved(spellPrefab);
+			if(OnAuraRemoved != null)
+			{
+				OnAuraRemoved(spellPrefab);
+			}
 		}
 	}
 }

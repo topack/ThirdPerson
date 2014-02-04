@@ -12,8 +12,8 @@ GameObject:
   - 23: {fileID: 2300000}
   - 135: {fileID: 13500000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: SpellFireBall
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 119ae600508d54484b808a2cfa29834e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d7d046b9928043c0adacccf7e7146ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db29b30250cd4920b31fb53f331b402, type: 3}
+  m_Script: {fileID: 11500000, guid: 3878c2abc0ec245f9898277f1934fa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SpellPrefab: {fileID: 0}

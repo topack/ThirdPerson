@@ -9,9 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: SpellFireDot
+  m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,44 +35,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6dafbe33ccc24ed194e65a26c194fb6, type: 3}
+  m_Script: {fileID: 11500000, guid: eb31fb3401bbc44b1b381eb286af713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
-  Name: 
-  IconTexture: {fileID: 0}
-  Value: 0
-  Range: 0
-  CastTime: 0
-  Duration: 0
-  TickTimer: 0
-  Cooldown: 0
-  GlobalCooldown: 0
-  School: 0
-  Mechanic: 0
-  DispellType: 0
-  CannotBeUsedInCombat: 0
-  CannotBeUsedWhileShapeshifted: 0
-  PassiveSpell: 0
-  HideAura: 0
-  StartTickingAtAuraApplication: 0
-  Caster: {fileID: 0}
-  Target: {fileID: 0}
-  TotalDuration: 0
-  TotalTick: 1
-  nbTick: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0676b783e894106b8fe18939cbe3e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpellPrefab: {fileID: 0}
+  Icon1: {fileID: 0}
+  Icon2: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

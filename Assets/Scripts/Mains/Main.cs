@@ -63,9 +63,5 @@ public class Main : MonoBehaviour
 		{
 			Icon2.Click();
 		}
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			FireBall.Effects[0].Value = 2;
-		}
 	}
 }

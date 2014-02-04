@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: IconSpell
+  m_Name: SpellAuras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,14 +35,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71a5927855c24da298bfec793aa2288, type: 3}
+  m_Script: {fileID: 11500000, guid: 940dfbd2a1f2249efa37030b29c38274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: {x: 0, y: 0}
-  Position: {x: 0, y: 0}
-  DefaultTexture: {fileID: 0}
+  NumberOfAura: {x: 6, y: 2}
+  IconSize: {x: 20, y: 20}
   Character: {fileID: 0}
-  SpellPrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
