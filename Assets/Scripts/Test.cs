@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Test : MonoBehaviour
 {
-
 	public Transform tr;
 	public GUITexture guiTexture;
 	public GUIText guiText;
