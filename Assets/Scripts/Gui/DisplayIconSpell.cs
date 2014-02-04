@@ -9,10 +9,7 @@ public class DisplayIconSpell : MonoBehaviour
 	public List<IconSpell> IconSpells = new List<IconSpell>();
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> 0139b609a9fb2463bac938f6059b5ff02853be92
 	/// subscribe event Character.AddAura()
 	/// subscribe event Character.RemoveAura()
 	/// </TODO>
