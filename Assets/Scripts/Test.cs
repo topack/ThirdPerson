@@ -1,15 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Test : MonoBehaviour
 {
 
 	public Transform tr;
-	public GUITexture texture;
+	public GUITexture guiTexture;
+	public GUIText guiText;
 
 	void Awake()
 	{
-		texture = this.gameObject.GetComponent<GUITexture>();
+		guiTexture = this.gameObject.GetComponent<GUITexture>();
+		guiText = this.gameObject.GetComponent<GUIText>();
 	}
 
 	// Update is called once per frame
@@ -17,6 +19,7 @@ public class Test : MonoBehaviour
 	{
 		Vector3 screenPos = Camera.main.WorldToScreenPoint(tr.position);
 		
-		texture.pixelInset = new Rect(screenPos.x - Screen.width / 2, screenPos.y - Screen.height / 2, 20, 20);
+		guiTexture.pixelInset = new Rect(screenPos.x - Screen.width / 2, screenPos.y - Screen.height / 2, 20, 20);
+		guiText.pixelInset = new Rect(screenPos.x - Screen.width / 2, screenPos.y - Screen.height / 2, 20, 20);
 	}
 }
