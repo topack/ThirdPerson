@@ -4,10 +4,13 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour
 {
 	public static Character Player;
-	public Icon Icon1;
-	public Icon Icon2;
+	public GuiSpellButton Icon1;
+	public GuiSpellButton Icon2;
 	public Spell FireBall;
 	public Spell Frostnova;
+	public static Texture DefaultAuraTexture;
+	public static string PrefabGuiSpellButton = "Prefabs/Gui/GuiSpellButton";
+	public static string PrefabGuiAura = "Prefabs/Gui/GuiAura";
 	
 	public void Awake()
 	{
@@ -42,15 +45,22 @@ public class Main : MonoBehaviour
 		Frostnova.Duration = 3;
 		Frostnova.Value = 4;
 
-		// add spell to plaier spell book
+		// add spell to player spell book
 		Player.SpellBook.Add(FireBall);
 		Player.SpellBook.Add(Frostnova);
 
 		// Init Icon and Set Spell from spellBook
-		Icon1.Player = Player;
-		Icon2.Player = Player;
-		Icon1.SetSpell(Player.SpellBook[0]);
-		Icon2.SetSpell(Player.SpellBook[1]);
+		Object prefabGuiSpellButton = Resources.Load(Main.PrefabGuiSpellButton);
+		if (prefabGuiSpellButton != null)
+		{
+			GameObject iconObj = GameObject.Instantiate(prefabGuiSpellButton, Vector3.zero, Quaternion.identity) as GameObject;
+			Icon1 = iconObj.GetComponent<GuiSpellButton>();
+			Icon1.Init(Player, Player.SpellBook[0], new Vector2(50, 50), new Vector2(0,0));
+
+			iconObj = GameObject.Instantiate(prefabGuiSpellButton, Vector3.zero, Quaternion.identity) as GameObject;
+			Icon2 = iconObj.GetComponent<GuiSpellButton>();
+			Icon2.Init(Player, Player.SpellBook[1], new Vector2(50, 50), new Vector2(55, 0));
+		}
 	}
 
 	public void Update()
