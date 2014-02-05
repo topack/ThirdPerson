@@ -4,5 +4,13 @@ TODO :
 -Remove debuff from target when debuff duration is over
 -Create MonoBehaviourScript to show SpellAura on Npc and Player
 
+-Create Gui.DisplayText to display text everywhere on screen
+-Use DisplayText in DisplaySpellAuras
+
+-Rename DisplaySpellAuras to DisplayAuras
+-Rename IconAura to DisplayAura
+
+-Try to generalize DisplayAura.
+
 -Show spellcooldown on icon
 -Can't cast spell when on cooldown
