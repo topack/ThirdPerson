@@ -30,7 +30,7 @@ public class IconAura : MonoBehaviour
 		GuiTexture.pixelInset = new Rect(screenPos.x + Position.x, screenPos.y + Position.y, iconSize.x, iconSize.y);
 		GuiText.pixelOffset = new Vector2(screenPos.x + 2, screenPos.y + 2);
 
-		GuiText.text = SpellPrefab.Cooldown - SpellPrefab.Duration;
+		GuiText.text = (SpellPrefab.Duration - SpellPrefab.TotalDuration).ToString();
 	}
 	
 	public void SetSpellPrefab(SpellPrefab spellPrefab)
@@ -44,7 +44,6 @@ public class IconAura : MonoBehaviour
 		if(SpellPrefab != null && SpellPrefab.IconTexture != null)
 		{
 			GuiTexture.texture = SpellPrefab.IconTexture;
-			GuiText.text = SpellPrefab.Cooldown - SpellPrefab.Duration;
 		}
 		else
 		{
