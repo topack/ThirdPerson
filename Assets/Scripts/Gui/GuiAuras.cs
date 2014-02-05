@@ -7,18 +7,17 @@ public class GuiAuras : MonoBehaviour
 	public Vector2 IconSize;
 	
 	private List<AuraIcon> auraIcons = new List<AuraIcon>();
-	private Character character;
+	public Character character;
+
+	public void Awake()
+	{
+		character.OnAuraAdded += AddAura;
+		character.OnAuraRemoved += RemoveAura;
+	}
 
 	public void FixedUpdate()
 	{
 		UpdateText();
-	}
-
-	public void Init(Character character)
-	{
-		this.character = character;
-		Character.OnAuraAdded += AddAura;
-		Character.OnAuraRemoved += RemoveAura;
 	}
 
 	public void AddAura(SpellPrefab spellPrefab)
@@ -37,7 +36,7 @@ public class GuiAuras : MonoBehaviour
 
 	public void RemoveAura(SpellPrefab spellPrefab)
 	{
-		GameObject.Destroy(auraIcons.Find(p => p.SpellPrefab == spellPrefab).GuiAura);
+		GameObject.Destroy(auraIcons.Find(p => p.SpellPrefab == spellPrefab).GuiAura.gameObject);
 		auraIcons.RemoveAll(p => p.SpellPrefab == spellPrefab);
 
 		UpdateAuraPosition();
@@ -72,7 +71,7 @@ public class GuiAuras : MonoBehaviour
 	{
 		foreach (AuraIcon auraIcon in auraIcons)
 		{
-			auraIcon.GuiAura.UpdateText((auraIcon.SpellPrefab.Duration - auraIcon.SpellPrefab.TotalDuration).ToString());
+			auraIcon.GuiAura.UpdateText(Mathf.CeilToInt(auraIcon.SpellPrefab.Duration - auraIcon.SpellPrefab.TotalDuration).ToString());
 		}
 	}
 	#endregion

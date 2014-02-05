@@ -53,9 +53,11 @@
      <Compile Include="Assets\Scripts\Enums\ReputationType.cs" />
      <Compile Include="Assets\Scripts\Enums\RessourceType.cs" />
      <Compile Include="Assets\Scripts\Enums\SchoolType.cs" />
-     <Compile Include="Assets\Scripts\Gui\DisplaySpellAuras.cs" />
-     <Compile Include="Assets\Scripts\Gui\Icon.cs" />
-     <Compile Include="Assets\Scripts\Gui\IconAura.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiAura.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiAuras.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiLabel.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiSlot.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiSpellButton.cs" />
      <Compile Include="Assets\Scripts\Mains\Main.cs" />
      <Compile Include="Assets\Scripts\Spells\Spell.cs" />
      <Compile Include="Assets\Scripts\Spells\SpellFireBall.cs" />

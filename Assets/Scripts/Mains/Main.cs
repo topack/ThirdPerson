@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour
 {
 	public static Character Player;
+	public Character Player2;
 	public GuiSpellButton Icon1;
 	public GuiSpellButton Icon2;
 	public Spell FireBall;
@@ -16,6 +17,7 @@ public class Main : MonoBehaviour
 	{
 		// Get the player for static use
 		Player = GameObject.Find("Character1").GetComponent<Character>();
+		Player2 = GameObject.Find("Character2").GetComponent<Character>();
 
 		// load spell config
 		FireBall = new Spell();
@@ -32,7 +34,7 @@ public class Main : MonoBehaviour
 			IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02"),
 			Prefab = "Prefabs/Spells/SpellFireDot",
 			Value = 2,
-			Duration = 5,
+			Duration = 50,
 			TickTimer = 1,
 			StartTickingAtAuraApplication = false
 			}

@@ -1,25 +1,23 @@
 using UnityEngine;
 
 [RequireComponent(typeof(GUIText))]
-public class GuiText : MonoBehaviour
+public class GuiLabel : MonoBehaviour
 {
-	private Vector2 Size;
-	private Vector2 PositionOffset;
+	private Vector2 positionOffset;
 	private Vector3 screenPos;
 	private Transform transformToFollow;
-	private GUIText guiText;
+	private GUIText guiLabel;
 
 	public void Awake()
 	{
-		guiText = this.gameObject.GetComponent<GUIText>();
+		guiLabel = this.gameObject.GetComponent<GUIText>();
 	}
 
 	public void Init(Vector2 size, Vector2 positionOffset, Transform transformToFollow, string text)
 	{
-		Size = size;
-		PositionOffset = positionOffset;
+		this.positionOffset = positionOffset;
 		this.transformToFollow = transformToFollow;
-		guiText.text = text;
+		this.guiLabel.text = text;
 	}
 
 	public void FixedUpdate()
@@ -32,11 +30,11 @@ public class GuiText : MonoBehaviour
 		{
 			screenPos = Vector3.zero;
 		}
-		guiText.pixelOffset = new Vector2(screenPos.x + PositionOffset.x, screenPos.y + PositionOffset.y);
+		guiLabel.pixelOffset = new Vector2(screenPos.x + positionOffset.x, screenPos.y + positionOffset.y);
 	}
 
 	public void UpdateText(string text)
 	{
-		guiText.text = text;
+		guiLabel.text = text;
 	}
 }

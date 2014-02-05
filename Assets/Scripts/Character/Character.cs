@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-[RequireComponent(typeof(GuiAuras))]
 public class Character : MonoBehaviour
 {
 	public string Name;
@@ -11,16 +10,9 @@ public class Character : MonoBehaviour
 	public List<Spell> SpellBook = new List<Spell>();
 	public List<SpellPrefab> Auras = new List<SpellPrefab>();
 
-	private GuiAuras guiAuras;
-
 	public delegate void AuraAction(SpellPrefab spellPrefab);
-	public static event AuraAction OnAuraAdded;
-	public static event AuraAction OnAuraRemoved;
-
-	public void Awake()
-	{
-		guiAuras = this.GetComponent<GuiAuras>();
-	}
+	public event AuraAction OnAuraAdded;
+	public event AuraAction OnAuraRemoved;
 
 	public virtual void AddAura(SpellPrefab spellPrefab)
 	{
@@ -31,11 +23,6 @@ public class Character : MonoBehaviour
 			if (OnAuraAdded != null)
 			{
 				OnAuraAdded(spellPrefab);
-			}
-
-			if(guiAuras != null)
-			{
-				guiAuras.AddAura(spellPrefab);
 			}
 		}
 	}
@@ -49,11 +36,6 @@ public class Character : MonoBehaviour
 			if (OnAuraRemoved != null)
 			{
 				OnAuraRemoved(spellPrefab);
-			}
-
-			if (guiAuras != null)
-			{
-				guiAuras.RemoveAura(spellPrefab);
 			}
 		}
 	}
