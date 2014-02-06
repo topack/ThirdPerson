@@ -1,5 +1,7 @@
 TODO :
 
+-simplify Spell and SpellPrefab logic
+
 -spell range logic
 -spell cooldown logic
 

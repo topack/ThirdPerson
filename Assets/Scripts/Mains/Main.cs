@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour
 {
 	public static Character Player;
+	public static float GlobalCoolDownTimer;
 	public Character Player2;
 	public GuiSpellButton Icon1;
 	public GuiSpellButton Icon2;
@@ -74,6 +75,15 @@ public class Main : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Z))
 		{
 			Icon2.Click();
+		}
+	}
+
+	public void FixedUpdate()
+	{
+		// decrease the GlobalCoolDown
+		if(GlobalCoolDownTimer > 0)
+		{
+			GlobalCoolDownTimer -= Time.deltaTime;
 		}
 	}
 }

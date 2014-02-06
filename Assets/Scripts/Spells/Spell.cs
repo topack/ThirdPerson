@@ -24,23 +24,11 @@ public class Spell
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects = new List<Spell>();
+
+	public float CooldownTimer;
 	#endregion
 
 	public Spell(){}
-
-	public Spell(int spellId)
-	{
-		Id = spellId;
-		InitialiseSpell();
-	}
-	
-	/// <summary>
-	/// Initialise the spell with the DB data
-	/// </summary>
-	protected void InitialiseSpell()
-	{
-		
-	}
 
 	/// <summary>
 	/// Casts the spell on the target
@@ -53,8 +41,15 @@ public class Spell
 			return;
 		}
 
-		Debug.Log(string.Format("Cast spell : {0}", Name));
+		if (Main.GlobalCoolDownTimer >= 0)
+		{
+			Debug.Log("Globalcooldown : " + Main.GlobalCoolDownTimer.ToString());
+			return;
+		}
 
+		Debug.Log(string.Format("Cast spell : {0}", Name));
+		Main.GlobalCoolDownTimer = GlobalCooldown;
+		this.CooldownTimer = Cooldown;
 		Apply(caster, target);
 	}
 

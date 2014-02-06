@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class SpellPrefab : MonoBehaviour
 {
+	#region declaration
 	/// <summary>
 	/// Id of the spell
 	/// </summary>
@@ -91,7 +92,8 @@ public class SpellPrefab : MonoBehaviour
 	/// TotalDuration done by the spell
 	/// </summary>
 	public float TotalDuration;
-	
+	#endregion
+
 	/// <summary>
 	/// Applly all the effects of the spell
 	/// </summary>
