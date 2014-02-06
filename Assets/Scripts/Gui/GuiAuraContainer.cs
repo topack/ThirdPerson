@@ -94,7 +94,7 @@ public class GuiAuraContainer : MonoBehaviour
 			auraInContainer.GuiAura.UpdateGuiAura(
 				aurasContainerPosition + AuraPosition(nbAura),
 				AuraSize,
-				auraInContainer.SpellPrefab.IconTexture,
+				auraInContainer.SpellPrefab.AuraTexture,
 				Mathf.CeilToInt(auraInContainer.SpellPrefab.Duration - auraInContainer.SpellPrefab.TotalDuration).ToString()
 				);
 

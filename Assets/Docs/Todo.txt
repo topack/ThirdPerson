@@ -1,5 +1,10 @@
 TODO :
 
+-spell range logic
+-spell cooldown logic
+
+-Create logic for character attributes
+
 -Create Target portrait with auras
 
 -Create GuiSlot wich can contain GuiSpellButton

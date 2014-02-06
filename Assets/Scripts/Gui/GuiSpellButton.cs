@@ -43,9 +43,9 @@ public class GuiSpellButton : MonoBehaviour
 	private void UpdateTexture()
 	{
 		texture = Main.DefaultTexture;
-		if (spell != null && spell.IconTexture != null)
+		if (spell != null && spell.AuraTexture != null)
 		{
-			texture = spell.IconTexture;
+			texture = spell.AuraTexture;
 		}
 	}
 	#endregion

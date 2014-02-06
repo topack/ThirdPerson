@@ -6,7 +6,7 @@ public class Spell
 	#region Declaration
 	public int Id;
 	public string Name;
-	public Texture IconTexture;
+	public Texture AuraTexture;
 	public string Prefab;		// prefab of the spell for 3D render
 	public int Value;
 	public int Range;			// (0==self)
@@ -83,7 +83,7 @@ public class Spell
 			if(spellPrefab != null)
 			{
 				spellPrefab.Name = Name;
-				spellPrefab.IconTexture = IconTexture;
+				spellPrefab.AuraTexture = AuraTexture;
 				spellPrefab.Value = Value;
 				spellPrefab.Duration = Duration;
 				spellPrefab.TickTimer = TickTimer;

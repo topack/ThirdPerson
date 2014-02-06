@@ -3,10 +3,10 @@ using System.Collections;
 
 public class SpellDot : MonoBehaviour
 {
-	public SpellPrefab SpellPrefab;
+	public SpellPrefab spellPrefab;
 	
 	void Awake()
 	{
-		SpellPrefab = this.GetComponent<SpellPrefab>();
+		spellPrefab = this.GetComponent<SpellPrefab>();
 	}
 }

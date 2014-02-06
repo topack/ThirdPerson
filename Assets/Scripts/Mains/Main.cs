@@ -23,7 +23,7 @@ public class Main : MonoBehaviour
 		FireBall = new Spell();
 		FireBall.Id = 1;
 		FireBall.Name = "Fireball";
-		FireBall.IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
+		FireBall.AuraTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
 		FireBall.Prefab = "Prefabs/Spells/SpellFireball";
 		FireBall.Value = 1;
 		FireBall.Effects.Add(
@@ -31,7 +31,7 @@ public class Main : MonoBehaviour
 			{
 			Id = 3,
 			Name = "Dot",
-			IconTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02"),
+			AuraTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02"),
 			Prefab = "Prefabs/Spells/SpellFireDot",
 			Value = 2,
 			Duration = 50,
@@ -43,7 +43,7 @@ public class Main : MonoBehaviour
 		Frostnova = new Spell();
 		Frostnova.Id = 2;
 		Frostnova.Name = "Frostnova";
-		Frostnova.IconTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova");
+		Frostnova.AuraTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova");
 		Frostnova.Duration = 3;
 		Frostnova.Value = 4;
 

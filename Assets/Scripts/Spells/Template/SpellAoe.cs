@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class SpellAoe : MonoBehaviour
 {
-	public SpellPrefab SpellPrefab;
+	private SpellPrefab spellPrefab;
 	
 	void Awake()
 	{
-		SpellPrefab = this.GetComponent<SpellPrefab>();
+		spellPrefab = this.GetComponent<SpellPrefab>();
 	}
 	
 	void OnTriggerEnter(Collider other)
 	{
-		SpellPrefab.AoeTrigger(other.gameObject);
+		spellPrefab.AoeTrigger(other.gameObject);
 	}
 }

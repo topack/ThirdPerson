@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SpellDot))]
 public class SpellFireDot : SpellPrefab
 {
-	public int TotalTick = 1;
-	public int nbTick = 0;
+	private int totalTick = 1;
+	private int nbTick = 0;
 
 	void Start()
 	{
 		if(TickTimer > 0)
 		{
-			TotalTick = Duration / TickTimer;
+			totalTick = Duration / TickTimer;
 		}
 		
 		ApplyAura(Target.GetComponent<Character>());
@@ -19,7 +20,7 @@ public class SpellFireDot : SpellPrefab
 
 	void FixedUpdate()
 	{
-		if(nbTick == TotalTick)
+		if(nbTick == totalTick)
 		{
 			RemoveAura(Target.GetComponent<Character>());
 			Destroy(this.gameObject);
@@ -37,11 +38,11 @@ public class SpellFireDot : SpellPrefab
 			yield return new WaitForSeconds(TickTimer);
 		}
 
-		while(nbTick != TotalTick)
+		while(nbTick != totalTick)
 		{
 			nbTick++;
 
-			Debug.Log("Dot " + nbTick  + " / " + TotalTick);
+			Debug.Log("Dot " + nbTick  + " / " + totalTick);
 			Target.GetComponent<Character>().Health -= Value;
 
 			yield return new WaitForSeconds(TickTimer);
