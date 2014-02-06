@@ -1,11 +1,5 @@
 TODO :
 
--Create MonoBehaviourScript to show SpellAura on Npc and Player
-
--Try to generalize DisplayAura.
-
--Show spellcooldown on icon
-
 -Create Target portrait with auras
 
 -Create GuiSlot wich can contain GuiSpellButton

@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GuiAuras : MonoBehaviour
+public class GuiAuraContainer : MonoBehaviour
 {
 	public Vector2 NumberOfAura;
 	public Vector2 IconSize;
+	public bool FollowTransform;
+	public Vector2 PositionOnScreen;
 	
 	private List<AuraIcon> auraIcons = new List<AuraIcon>();
 	public Character character;
@@ -17,7 +19,7 @@ public class GuiAuras : MonoBehaviour
 
 	public void FixedUpdate()
 	{
-		UpdateText();
+
 	}
 
 	public void AddAura(SpellPrefab spellPrefab)
@@ -28,7 +30,7 @@ public class GuiAuras : MonoBehaviour
 			GameObject iconObj = GameObject.Instantiate(prefabGuiAura, Vector3.zero, Quaternion.identity) as GameObject;
 			iconObj.transform.parent = this.transform;
 			GuiAura guiAura = iconObj.GetComponent<GuiAura>();
-			guiAura.Init(IconSize, AuraPosition(auraIcons.Count), this.transform, spellPrefab.IconTexture);
+			guiAura.Init(IconSize, AuraPosition(auraIcons.Count), FollowTransform, PositionOnScreen, this.transform, spellPrefab);
 
 			auraIcons.Add(new AuraIcon(guiAura, spellPrefab));
 		}
@@ -64,14 +66,6 @@ public class GuiAuras : MonoBehaviour
 		{
 			auraIcon.GuiAura.UpdatePositionOffset(AuraPosition(i));
 			i++;
-		}
-	}
-
-	private void UpdateText()
-	{
-		foreach (AuraIcon auraIcon in auraIcons)
-		{
-			auraIcon.GuiAura.UpdateText(Mathf.CeilToInt(auraIcon.SpellPrefab.Duration - auraIcon.SpellPrefab.TotalDuration).ToString());
 		}
 	}
 	#endregion

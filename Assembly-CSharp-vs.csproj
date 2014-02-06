@@ -54,7 +54,7 @@
      <Compile Include="Assets\Scripts\Enums\RessourceType.cs" />
      <Compile Include="Assets\Scripts\Enums\SchoolType.cs" />
      <Compile Include="Assets\Scripts\Gui\GuiAura.cs" />
-     <Compile Include="Assets\Scripts\Gui\GuiAuras.cs" />
+     <Compile Include="Assets\Scripts\Gui\GuiAuraContainer.cs" />
      <Compile Include="Assets\Scripts\Gui\GuiLabel.cs" />
      <Compile Include="Assets\Scripts\Gui\GuiSlot.cs" />
      <Compile Include="Assets\Scripts\Gui\GuiSpellButton.cs" />

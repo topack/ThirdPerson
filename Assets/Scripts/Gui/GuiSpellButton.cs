@@ -42,7 +42,7 @@ public class GuiSpellButton : MonoBehaviour
 	#region private
 	private void UpdateTexture()
 	{
-		texture = Main.DefaultAuraTexture;
+		texture = Main.DefaultTexture;
 		if (spell != null && spell.IconTexture != null)
 		{
 			texture = spell.IconTexture;

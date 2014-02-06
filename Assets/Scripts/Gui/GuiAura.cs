@@ -9,32 +9,40 @@ public class GuiAura : MonoBehaviour
 
 	private Vector2 size;
 	private Vector2 positionOffset;
+	private bool followTransform;
+	private Vector2 positionOnScreen;
 	private Transform transformToFollow;
-	private GUITexture texture;
-	private GUIText text;
-	private Vector3 screenPos;
+	private SpellPrefab spellPrefab;
+	private GUITexture guiAuraTexture;
+	private GUIText guiLabel;
 
 	void Awake()
 	{
-		texture = this.gameObject.GetComponent<GUITexture>();
-		text = this.gameObject.GetComponent<GUIText>();
+		guiAuraTexture = this.gameObject.GetComponent<GUITexture>();
+		guiLabel = this.gameObject.GetComponent<GUIText>();
 	}
 
-	public void Init(Vector2 size, Vector2 positionOffset, Transform transformToFollow, Texture texture)
+	public void Init(Vector2 size, Vector2 positionOffset, bool followTransform, Vector2 positionOnScreen, Transform transformToFollow, SpellPrefab spellPrefab)
 	{
 		this.size = size;
 		this.positionOffset = positionOffset;
+		this.followTransform = followTransform;
+		this.positionOnScreen = positionOnScreen;
 		this.transformToFollow = transformToFollow;
-		this.texture.texture = texture;
-		if (this.texture.texture == null)
+		this.spellPrefab = spellPrefab;
+		if (this.spellPrefab == null || this.spellPrefab.IconTexture == null)
 		{
-			this.texture.texture = Main.DefaultAuraTexture;
+			this.guiAuraTexture.texture = Main.DefaultTexture;
+		}
+		else
+		{
+			this.guiAuraTexture.texture = this.spellPrefab.IconTexture;
 		}
 	}
 
 	void FixedUpdate ()
 	{
-		if (transformToFollow != null)
+		if (followTransform && transformToFollow != null)
 		{
 			screenPos = Camera.main.WorldToScreenPoint(transformToFollow.position);
 		}
@@ -43,8 +51,15 @@ public class GuiAura : MonoBehaviour
 			screenPos = Vector3.zero;
 		}
 
-		texture.pixelInset = new Rect(screenPos.x + positionOffset.x, screenPos.y + positionOffset.y, size.x, size.y);
-		text.pixelOffset = new Vector2(screenPos.x + positionOffset.x + 2, screenPos.y + positionOffset.y + 2);
+		if(!followTransform)
+		{
+			screenPos = positionOnScreen;
+		}
+
+		guiAuraTexture.pixelInset = new Rect(screenPos.x + positionOffset.x, screenPos.y + positionOffset.y, size.x, size.y);
+		guiLabel.pixelOffset = new Vector2(screenPos.x + positionOffset.x + 2, screenPos.y + positionOffset.y + 2);
+
+		guiLabel.text = Mathf.CeilToInt(spellPrefab.Duration - spellPrefab.TotalDuration).ToString();
 	}
 
 	public void UpdatePositionOffset(Vector2 positionOffset)
@@ -54,6 +69,6 @@ public class GuiAura : MonoBehaviour
 
 	public void UpdateText(string text)
 	{
-		this.text.text = text;
+		this.guiLabel.text = text;
 	}
 }

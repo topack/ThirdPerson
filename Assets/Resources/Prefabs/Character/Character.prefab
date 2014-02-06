@@ -29,7 +29,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: GuiAuras
+  m_Name: GuiAuraContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .699999988, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 400000}
 --- !u!23 &2300000
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde6ce9f4aca3461d8cd833fa5c23ca9, type: 3}
+  m_Script: {fileID: 11500000, guid: b68522064c0d44fcb8233941977c60d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfAura: {x: 6, y: 1}

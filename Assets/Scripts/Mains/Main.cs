@@ -9,7 +9,7 @@ public class Main : MonoBehaviour
 	public GuiSpellButton Icon2;
 	public Spell FireBall;
 	public Spell Frostnova;
-	public static Texture DefaultAuraTexture;
+	public static Texture DefaultTexture = Resources.Load<Texture>("Icons/Inv_misc_questionmark");
 	public static string PrefabGuiSpellButton = "Prefabs/Gui/GuiSpellButton";
 	public static string PrefabGuiAura = "Prefabs/Gui/GuiAura";
 	
