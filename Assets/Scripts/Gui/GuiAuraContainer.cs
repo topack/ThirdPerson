@@ -24,26 +24,37 @@ public class GuiAuraContainer : MonoBehaviour
 	/// </summary>
 	public Character character;
 
+	/// <summary>
+	/// List of the auras in the container
+	/// </summary>
 	private List<AuraInContainer> aurasInContainer = new List<AuraInContainer>();
 
 	public void Awake()
 	{
+		// watch events from the character
 		character.OnAuraAdded += AddAura;
 		character.OnAuraRemoved += RemoveAura;
 	}
 
 	public void FixedUpdate()
 	{
+		// update all the auras in the container
 		UpdateAuras();
 	}
 
+	/// <summary>
+	/// Add the aura of the sellPrefab in the container
+	/// </summary>
+	/// <param name="spellPrefab">SpellPrefab with the aura to add</param>
 	public void AddAura(SpellPrefab spellPrefab)
 	{
+		// can't add aura if the limit is reached
 		if (aurasInContainer.Count >= (NumberOfAura.x * NumberOfAura.y))
 		{
 			return;
 		}
 
+		// create the GuiAura GameObject and memorize the object
 		Object prefabGuiAura = Resources.Load(Main.PrefabGuiAura);
 		if (prefabGuiAura != null)
 		{
@@ -54,6 +65,10 @@ public class GuiAuraContainer : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Remove the aura from the container and destroy the GuiAura GameObject.
+	/// </summary>
+	/// <param name="spellPrefab">SpellPrefab with the aura to remove</param>
 	public void RemoveAura(SpellPrefab spellPrefab)
 	{
 		GameObject.Destroy(aurasInContainer.Find(p => p.SpellPrefab == spellPrefab).GuiAura.gameObject);
@@ -61,6 +76,10 @@ public class GuiAuraContainer : MonoBehaviour
 	}
 
 	#region private
+	/// <summary>
+	/// Update all the auras of the container based on their SpellPrefab.
+	/// Update position, texture and label
+	/// </summary>
 	private void UpdateAuras()
 	{
 		Vector2 aurasContainerPosition = PositionOnScreen;
@@ -83,6 +102,11 @@ public class GuiAuraContainer : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Return the position of the aura in the container
+	/// </summary>
+	/// <param name="nbAura">Number of aura allready displayed</param>
+	/// <returns>Position of the aura</returns>
 	private Vector2 AuraPosition(int nbAura)
 	{
 		int nbRow = Mathf.FloorToInt(nbAura / NumberOfAura.x);
