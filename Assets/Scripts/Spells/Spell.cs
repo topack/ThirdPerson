@@ -24,12 +24,13 @@ public class Spell : MonoBehaviour
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects = new List<Spell>();
+	public Character Character;
 	#endregion
 
 	/// <summary>
 	/// Casts the spell on the target
 	/// </summary>
-	public virtual void Cast(GameObject caster, GameObject target)
+	public virtual void Cast(Character target)
 	{
 		if(target == null)
 		{
@@ -48,7 +49,7 @@ public class Spell : MonoBehaviour
 		Main.GlobalCoolDownTimer = GlobalCooldown;
 		this.CooldownTimer = Cooldown;
 
-		CreatePrefab(caster, target);
+		CreatePrefab(target);
 	}
 
 	/// <summary>
@@ -56,10 +57,15 @@ public class Spell : MonoBehaviour
 	/// </summary>
 	/// <param name="caster">caster of the spell</param>
 	/// <param name="target">target of the spell</param>
-	protected virtual void CreatePrefab(GameObject caster, GameObject target)
+	protected virtual void CreatePrefab(Character target)
 	{
 		GameObject obj = GameObject.Instantiate(this.gameObject, caster.transform.position, Quaternion.identity) as GameObject;
-		Spell spellObj = obj.GetComponent<Spell>();
+		obj.GetComponent<Spell>().SetTarget(target);
+	}
+
+	public void SetTarget(Character target)
+	{
+
 	}
 
 	/// <summary>
@@ -70,7 +76,7 @@ public class Spell : MonoBehaviour
 		// foreach effects cast the spell
 		foreach (Spell spell in Effects)
 		{
-			spell.Cast(Caster, Target);
+			spell.Cast(Target);
 		}
 	}
 

@@ -1,13 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gui/GuiAura.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Spells/Spell.cs">
     <Files>
-      <File FileName="Assets/Scripts/Mains/Main.cs" Line="12" Column="38" />
+      <File FileName="Assets/Scripts/Mains/Main.cs" Line="36" Column="1" />
+      <File FileName="Assets/Scripts/Spells/Spell.cs" Line="68" Column="3" />
       <File FileName="Assets/Scripts/Character/Character.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gui/GuiAuraContainer.cs" Line="21" Column="3" />
-      <File FileName="Assets/Scripts/Gui/GuiAura.cs" Line="63" Column="3" />
-      <File FileName="Assets/Scripts/Gui/GuiSpellButton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Docs/Todo.txt" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Spells/SpellFireBall.cs" Line="13" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

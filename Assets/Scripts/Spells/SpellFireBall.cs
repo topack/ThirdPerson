@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(SpellProjectil))]
-public class SpellFireBall : SpellPrefab
+public class SpellFireBall : Spell
 {
 	/// <summary>
 	/// Attached to a SpellProjectil trigger event
