@@ -1,12 +1,18 @@
 TODO :
 
--simplify Spell and SpellPrefab logic
-
+-spell add tick timer logic to the aura
 -spell range logic
 -spell cooldown logic
+-spell globalCooldown logic
+-spell selfSpell logic
+-spell CastTimer/Channeling logic
+
+-Create spell dispellAura based on DispellType
+-Create spell area of effect
+-Create spell invoke object
+-Create spell Channeling
+-Create spell Aura buff
 
 -Create logic for character attributes
-
 -Create Target portrait with auras
-
 -Create GuiSlot wich can contain GuiSpellButton
