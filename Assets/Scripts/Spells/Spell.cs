@@ -1,20 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Spell : MonoBehaviour
+public class Spell
 {
 	#region Declaration
 	public int Id;
 	public string Name;
 	public Texture AuraTexture;
+	public string Prefab;		// prefab of the spell for 3D render
 	public int Value;
-	public int Range;
-	public int CastTime;
+	public int Range;			// (0==self)
+	public int CastTime;		// (instant == 0, channel < 0, cast > 0)
 	public int Duration;
 	public int TickTimer;
 	public int Cooldown;
-	public float CooldownTimer;
-	public int GlobalCooldown;	
+	public int GlobalCooldown;
 	public SchoolType School;
 	public MechanicType Mechanic;
 	public DispellType DispellType;
@@ -24,13 +24,16 @@ public class Spell : MonoBehaviour
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects = new List<Spell>();
-	public Character Character;
+
+	public float CooldownTimer;
 	#endregion
+
+	public Spell(){}
 
 	/// <summary>
 	/// Casts the spell on the target
 	/// </summary>
-	public virtual void Cast(Character target)
+	public virtual void Cast(GameObject caster, GameObject target)
 	{
 		if(target == null)
 		{
@@ -45,11 +48,19 @@ public class Spell : MonoBehaviour
 		}
 
 		Debug.Log(string.Format("Cast spell : {0}", Name));
-
 		Main.GlobalCoolDownTimer = GlobalCooldown;
 		this.CooldownTimer = Cooldown;
+		Apply(caster, target);
+	}
 
-		CreatePrefab(target);
+	/// <summary>
+	/// Apply the spell
+	/// </summary>
+	/// <param name="caster">caster of the spell</param>
+	/// <param name="target">target of the spell</param>
+	protected virtual void Apply(GameObject caster, GameObject target)
+	{
+		CreatePrefab(caster, target);
 	}
 
 	/// <summary>
@@ -57,68 +68,25 @@ public class Spell : MonoBehaviour
 	/// </summary>
 	/// <param name="caster">caster of the spell</param>
 	/// <param name="target">target of the spell</param>
-	protected virtual void CreatePrefab(Character target)
+	protected virtual void CreatePrefab(GameObject caster, GameObject target)
 	{
-		GameObject obj = GameObject.Instantiate(this.gameObject, caster.transform.position, Quaternion.identity) as GameObject;
-		obj.GetComponent<Spell>().SetTarget(target);
-	}
-
-	public void SetTarget(Character target)
-	{
-
-	}
-
-	/// <summary>
-	/// Applly all the effects of the spell
-	/// </summary>
-	public virtual void ApplyEffects()
-	{
-		// foreach effects cast the spell
-		foreach (Spell spell in Effects)
+		Object prefab = Resources.Load(Prefab);
+		if (prefab != null)
 		{
-			spell.Cast(Target);
+			GameObject obj = GameObject.Instantiate(prefab, caster.transform.position, Quaternion.identity) as GameObject;
+			SpellPrefab spellPrefab = obj.GetComponent<SpellPrefab>();
+			if(spellPrefab != null)
+			{
+				spellPrefab.Name = Name;
+				spellPrefab.AuraTexture = AuraTexture;
+				spellPrefab.Value = Value;
+				spellPrefab.Duration = Duration;
+				spellPrefab.TickTimer = TickTimer;
+				spellPrefab.StartTickingAtAuraApplication = StartTickingAtAuraApplication;
+				spellPrefab.Effects = Effects;
+				spellPrefab.Caster = caster;
+				spellPrefab.Target = target;
+			}
 		}
-	}
-
-	/// <summary>
-	/// Add the aura of the spell on the target
-	/// </summary>
-	/// <param name="target"></param>
-	public virtual void ApplyAura(Character target)
-	{
-		if (target != null)
-		{
-			target.AddAura(this);
-		}
-	}
-
-	/// <summary>
-	/// Remove the aura of the spell on the target
-	/// </summary>
-	/// <param name="target"></param>
-	public virtual void RemoveAura(Character target)
-	{
-		if (target != null)
-		{
-			target.RemoveAura(this);
-		}
-	}
-
-	/// <summary>
-	/// Method when the pojectil enter a trigger
-	/// </summary>
-	/// <param name="gameobject">GameObject wich enter the trigger</param>
-	public virtual void ProjectilTrigger(GameObject gameobject)
-	{
-		Debug.Log("SpellPrefab ProjectilTrigger");
-	}
-
-	/// <summary>
-	/// Method when the aoe enter a trigger
-	/// </summary>
-	/// <param name="gameObject">GameObject wich enter the trigger</param>
-	public virtual void AoeTrigger(GameObject gameObject)
-	{
-		Debug.Log("SpellPrefab AoeTrigger");
 	}
 }
