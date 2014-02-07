@@ -1,10 +1,11 @@
 TODO :
 
--spell add tick timer logic to the aura
--spell range logic
--spell cooldown logic
--spell globalCooldown logic
--spell selfSpell logic
+-spell add Auras stack on character when same spell
+ok-spell add tick timer logic to the aura
+ok-spell range logic
+ok-spell cooldown logic
+ok-spell globalCooldown logic
+ok-spell selfSpell logic
 -spell CastTimer/Channeling logic
 
 -Create spell dispellAura based on DispellType

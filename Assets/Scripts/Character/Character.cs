@@ -14,6 +14,15 @@ public class Character : MonoBehaviour
 	public event AuraAction OnAuraAdded;
 	public event AuraAction OnAuraRemoved;
 
+	public void FixedUpdate()
+	{
+		FixedUpdateLogic();
+	}
+
+	public virtual void FixedUpdateLogic()
+	{
+	}
+
 	public virtual void AddAura(SpellPrefab spellPrefab)
 	{
 		if(spellPrefab != null)

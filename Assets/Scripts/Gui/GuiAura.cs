@@ -18,10 +18,8 @@ public class GuiAura : MonoBehaviour
 	{
 		// get the GUITexture and GUIText components
 		// change GUIText position to render in front of the GUITexture
-		guiAuraTexture = this.gameObject.GetComponent<GUITexture>();
-		guiLabel.transform.position = Vector3.zero;
-		guiLabel = this.gameObject.GetComponent<GUIText>();
-		guiLabel.transform.position = new Vector3(0,0,1);
+		guiAuraTexture = this.GetComponent<GUITexture>();
+		guiLabel = this.GetComponent<GUIText>();
 	}
 
 	/// <summary>

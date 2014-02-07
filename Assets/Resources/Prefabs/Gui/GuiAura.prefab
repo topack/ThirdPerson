@@ -40,7 +40,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1850655916e148259ba3b7bf60c5046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultTexture: {fileID: 2800000, guid: 7084cccd55e98433c9f386fc962bc54e, type: 3}
 --- !u!131 &13100000
 GUITexture:
   m_ObjectHideFlags: 1
@@ -69,7 +68,7 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: 
-  m_Anchor: 6
+  m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   Name: 
-  IconTexture: {fileID: 0}
+  AuraTexture: {fileID: 0}
   Value: 0
   Range: 0
   CastTime: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3878c2abc0ec245f9898277f1934fa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpellPrefab: {fileID: 0}
+  Speed: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

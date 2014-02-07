@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .699999988, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
 --- !u!23 &2300000
@@ -124,8 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68522064c0d44fcb8233941977c60d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfAura: {x: 6, y: 1}
-  IconSize: {x: 20, y: 20}
+  NumberOfAura: {x: 4, y: 2}
+  AuraSize: {x: 20, y: 20}
+  FollowTransform: 1
+  PositionOnScreen: {x: 0, y: 0}
   character: {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:

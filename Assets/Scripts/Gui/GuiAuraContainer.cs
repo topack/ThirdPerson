@@ -29,53 +29,61 @@ public class GuiAuraContainer : MonoBehaviour
 	/// </summary>
 	private List<AuraInContainer> aurasInContainer = new List<AuraInContainer>();
 
-	public void Awake()
-	{
-		// watch events from the character
-		character.OnAuraAdded += AddAura;
-		character.OnAuraRemoved += RemoveAura;
-	}
-
 	public void FixedUpdate()
 	{
-		// update all the auras in the container
+		RemoveAura();
+		AddAura();
 		UpdateAuras();
 	}
 
+	#region private
 	/// <summary>
 	/// Add the aura of the sellPrefab in the container
 	/// </summary>
 	/// <param name="spellPrefab">SpellPrefab with the aura to add</param>
-	public void AddAura(SpellPrefab spellPrefab)
+	private void AddAura()
 	{
-		// can't add aura if the limit is reached
-		if (aurasInContainer.Count >= (NumberOfAura.x * NumberOfAura.y))
+		foreach(SpellPrefab aura in character.Auras)
 		{
-			return;
-		}
-
-		// create the GuiAura GameObject and memorize the object
-		Object prefabGuiAura = Resources.Load(Main.PrefabGuiAura);
-		if (prefabGuiAura != null)
-		{
-			GameObject iconObj = GameObject.Instantiate(prefabGuiAura, Vector3.zero, Quaternion.identity) as GameObject;
-			iconObj.transform.parent = this.transform;
-			GuiAura guiAura = iconObj.GetComponent<GuiAura>();
-			aurasInContainer.Add(new AuraInContainer(guiAura, spellPrefab));
+			if(!aurasInContainer.Exists(p => p.SpellPrefab == aura))
+			{
+				// can't add aura if the limit is reached
+				if (aurasInContainer.Count >= (NumberOfAura.x * NumberOfAura.y))
+				{
+					return;
+				}
+				
+				// create the GuiAura GameObject and memorize the object
+				Object prefabGuiAura = Resources.Load(Main.PrefabGuiAura);
+				if (prefabGuiAura != null)
+				{
+					GameObject iconObj = GameObject.Instantiate(prefabGuiAura, Vector3.zero, Quaternion.identity) as GameObject;
+					iconObj.transform.parent = this.transform;
+					GuiAura guiAura = iconObj.GetComponent<GuiAura>();
+					aurasInContainer.Add(new AuraInContainer(guiAura, aura));
+				}
+			}
 		}
 	}
 
 	/// <summary>
 	/// Remove the aura from the container and destroy the GuiAura GameObject.
 	/// </summary>
-	/// <param name="spellPrefab">SpellPrefab with the aura to remove</param>
-	public void RemoveAura(SpellPrefab spellPrefab)
+	private void RemoveAura()
 	{
-		GameObject.Destroy(aurasInContainer.Find(p => p.SpellPrefab == spellPrefab).GuiAura.gameObject);
-		aurasInContainer.RemoveAll(p => p.SpellPrefab == spellPrefab);
+		List<SpellPrefab> spellsP = new List<SpellPrefab>();
+		foreach(AuraInContainer aura in aurasInContainer)
+		{
+			if(!character.Auras.Exists(p => p == aura.SpellPrefab))
+			{
+				GameObject.Destroy(aura.GuiAura.gameObject);
+				spellsP.Add(aura.SpellPrefab);
+			}
+		}
+		
+		aurasInContainer.RemoveAll(p => spellsP.Contains(p.SpellPrefab));
 	}
 
-	#region private
 	/// <summary>
 	/// Update all the auras of the container based on their SpellPrefab.
 	/// Update position, texture and label
@@ -112,7 +120,7 @@ public class GuiAuraContainer : MonoBehaviour
 		int nbRow = Mathf.FloorToInt(nbAura / NumberOfAura.x);
 		float auraInRow = nbAura - (nbRow * NumberOfAura.x);
 
-		return new Vector2(AuraSize.y * nbRow, auraInRow * AuraSize.x);
+		return new Vector2(auraInRow * AuraSize.x, AuraSize.y * nbRow);
 	}
 	#endregion
 

@@ -9,26 +9,31 @@ public class Spell
 	public Texture AuraTexture;
 	public string Prefab;		// prefab of the spell for 3D render
 	public int Value;
-	public int Range;			// (0==self)
-	public int CastTime;		// (instant == 0, channel < 0, cast > 0)
-	public int Duration;
-	public int TickTimer;
-	public int Cooldown;
-	public int GlobalCooldown;
+	public float Range;			// (0==self)
+	public float CastTime;		// (instant == 0, channel < 0, cast > 0)
+	public float Duration;
+	public float TickTimer;
+	public float Cooldown;
+	public float GlobalCooldown;
 	public SchoolType School;
 	public MechanicType Mechanic;
 	public DispellType DispellType;
 	public bool CannotBeUsedInCombat;
 	public bool CannotBeUsedWhileShapeshifted;
 	public bool PassiveSpell;
+	public bool SelfSpell;
 	public bool HideAura;
 	public bool StartTickingAtAuraApplication;
 	public List<Spell> Effects = new List<Spell>();
 
 	public float CooldownTimer;
+	public bool IsEffect = false;
 	#endregion
 
-	public Spell(){}
+	void FixedUpdate()
+	{
+		Debug.Log("a");
+	}
 
 	/// <summary>
 	/// Casts the spell on the target
@@ -41,15 +46,37 @@ public class Spell
 			return;
 		}
 
-		if (Main.GlobalCoolDownTimer >= 0)
+		if(SelfSpell && caster != target)
 		{
-			Debug.Log("Globalcooldown : " + Main.GlobalCoolDownTimer.ToString());
+			Debug.Log("Self spell");
+			return;
+		}
+
+		if (!IsEffect && Main.GlobalCoolDownTimer > 0)
+		{
+			Debug.Log("Globalcooldown not finished : " + Main.GlobalCoolDownTimer.ToString());
+			return;
+		}
+
+		if(CooldownTimer > 0)
+		{
+			Debug.Log("Cooldown not finished : " + CooldownTimer.ToString());
+			return;
+		}
+
+		if(!IsEffect && Vector3.Distance(caster.transform.position, target.transform.position) > Range)
+		{
+			Debug.Log("Out of range");
 			return;
 		}
 
 		Debug.Log(string.Format("Cast spell : {0}", Name));
-		Main.GlobalCoolDownTimer = GlobalCooldown;
-		this.CooldownTimer = Cooldown;
+		if(!IsEffect)
+		{
+			Main.GlobalCoolDownTimer = GlobalCooldown;
+			this.CooldownTimer = Cooldown;
+		}
+
 		Apply(caster, target);
 	}
 
@@ -77,6 +104,8 @@ public class Spell
 			SpellPrefab spellPrefab = obj.GetComponent<SpellPrefab>();
 			if(spellPrefab != null)
 			{
+				spellPrefab.Spell = this;
+				spellPrefab.Id = Id;
 				spellPrefab.Name = Name;
 				spellPrefab.AuraTexture = AuraTexture;
 				spellPrefab.Value = Value;
@@ -86,6 +115,9 @@ public class Spell
 				spellPrefab.Effects = Effects;
 				spellPrefab.Caster = caster;
 				spellPrefab.Target = target;
+				spellPrefab.Cooldown = Cooldown;
+				spellPrefab.CooldownTimer = Cooldown;
+				spellPrefab.Range = Range;
 			}
 		}
 	}

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class SpellPrefab : MonoBehaviour
 {
 	#region declaration
+	public Spell Spell;
+
 	/// <summary>
 	/// Id of the spell
 	/// </summary>
@@ -23,27 +25,31 @@ public class SpellPrefab : MonoBehaviour
 	/// <summary>
 	/// range of the spell (0 == self)
 	/// </summary>
-	public int Range;
+	public float Range;
 	/// <summary>
 	/// CastTime of the spell (instant == 0, channel < 0, cast > 0)
 	/// </summary>
-	public int CastTime;
+	public float CastTime;
 	/// <summary>
 	/// Duration of the spell (-1 permanent)
 	/// </summary>
-	public int Duration;
+	public float Duration;
 	/// <summary>
 	/// Time between each tick of the spell
 	/// </summary>
-	public int TickTimer;
+	public float TickTimer;
 	/// <summary>
 	/// Cooldown of the spell
 	/// </summary>
-	public int Cooldown;
+	public float Cooldown;
+	/// <summary>
+	/// Timer of the Cooldown
+	/// </summary>
+	public float CooldownTimer;
 	/// <summary>
 	/// GlobalCooldown time
 	/// </summary>
-	public int GlobalCooldown;
+	public float GlobalCooldown;
 	/// <summary>
 	/// School type of the spell
 	/// </summary>
@@ -92,7 +98,24 @@ public class SpellPrefab : MonoBehaviour
 	/// TotalDuration done by the spell
 	/// </summary>
 	public float TotalDuration;
+
+	private bool destroy = false;
 	#endregion
+
+	public void FixedUpdate()
+	{
+		FixedUpdateLogic();
+
+		if(destroy && Spell.CooldownTimer <=0)
+		{
+			Destroy (this.gameObject);
+		}
+	}
+
+	public virtual void FixedUpdateLogic()
+	{
+		Spell.CooldownTimer -= Time.deltaTime;
+	}
 
 	/// <summary>
 	/// Applly all the effects of the spell
@@ -129,7 +152,7 @@ public class SpellPrefab : MonoBehaviour
 			target.RemoveAura(this);
 		}
 	}
-	
+
 	/// <summary>
 	/// Method when the pojectil enter a trigger
 	/// </summary>
@@ -146,5 +169,13 @@ public class SpellPrefab : MonoBehaviour
 	public virtual void AoeTrigger (GameObject gameObject)
 	{
 		Debug.Log("SpellPrefab AoeTrigger");
+	}
+
+	public void DestroySpellPrefab()
+	{
+		Destroy(this.GetComponent<Rigidbody>());
+		Destroy(this.GetComponent<MeshRenderer>());
+		Destroy(this.GetComponent<SphereCollider>());
+		destroy = true;
 	}
 }

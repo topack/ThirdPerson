@@ -11,19 +11,19 @@ public class SpellFireDot : SpellPrefab
 	{
 		if(TickTimer > 0)
 		{
-			totalTick = Duration / TickTimer;
+			totalTick = (int)(Duration / TickTimer);
 		}
 		
 		ApplyAura(Target.GetComponent<Character>());
 		StartCoroutine(MyCoroutine());
 	}
 
-	void FixedUpdate()
+	public override void FixedUpdateLogic()
 	{
 		if(nbTick == totalTick)
 		{
 			RemoveAura(Target.GetComponent<Character>());
-			Destroy(this.gameObject);
+			DestroySpellPrefab();
 		}
 		else
 		{
@@ -41,8 +41,6 @@ public class SpellFireDot : SpellPrefab
 		while(nbTick != totalTick)
 		{
 			nbTick++;
-
-			Debug.Log("Dot " + nbTick  + " / " + totalTick);
 			Target.GetComponent<Character>().Health -= Value;
 
 			yield return new WaitForSeconds(TickTimer);

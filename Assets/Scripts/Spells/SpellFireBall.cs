@@ -20,7 +20,7 @@ public class SpellFireBall : SpellPrefab
 			ApplyEffects();
 
 			// destroy the spell
-			Destroy(this.gameObject);
+			DestroySpellPrefab();
 		}
 	}
 }

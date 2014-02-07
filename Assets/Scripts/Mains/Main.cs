@@ -27,6 +27,10 @@ public class Main : MonoBehaviour
 		FireBall.AuraTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02");
 		FireBall.Prefab = "Prefabs/Spells/SpellFireball";
 		FireBall.Value = 1;
+		FireBall.CastTime = 10;
+		FireBall.Cooldown = 15;
+		FireBall.GlobalCooldown = 1;
+		FireBall.Range = 2;
 		FireBall.Effects.Add(
 			new Spell
 			{
@@ -35,9 +39,11 @@ public class Main : MonoBehaviour
 			AuraTexture = Resources.Load<Texture>("Icons/Spell_fire_fireball02"),
 			Prefab = "Prefabs/Spells/SpellFireDot",
 			Value = 2,
-			Duration = 50,
+			Duration = 15,
 			TickTimer = 1,
-			StartTickingAtAuraApplication = false
+			PassiveSpell = true,
+			StartTickingAtAuraApplication = false,
+			IsEffect = true
 			}
 		);
 		
@@ -47,6 +53,7 @@ public class Main : MonoBehaviour
 		Frostnova.AuraTexture = Resources.Load<Texture>("Icons/Spell_frost_frostnova");
 		Frostnova.Duration = 3;
 		Frostnova.Value = 4;
+		Frostnova.SelfSpell = true;
 
 		// add spell to player spell book
 		Player.SpellBook.Add(FireBall);
